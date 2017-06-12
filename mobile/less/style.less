@@ -1,0 +1,51 @@
+@charset 'UTF-8';
+// @import 'common';
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://cdn.jsdelivr.net/font-nanumlight/1.0/nanumbarungothicweb.css');
+
+@point-color: #d8242c;
+@red-color: #e6313a;
+@default-color: #363636;
+@img-url : '/innovation/RedCross2/img';
+@mobile-img-url : '/innovation/RedCross2/mobile/img';
+.sp-img(@position) {
+    background: url('@{img-url}/sprite.png') no-repeat @position;
+    background-size: 200px;
+}
+
+@mobile-small:  ~"only screen and (max-width: 340px)";
+@mobile-medium: ~"only screen and (max-width: 480px)";
+@mobile:        ~"only screen and (max-width: 768px)";
+@tablet:        ~"only screen and (max-width: 1024px)";
+@desktop:       ~"only screen and (max-width: 1120px)";
+@desktop-small: ~"only screen and (max-height: 768px)";
+@retina:        ~"only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)" ;
+
+// Default
+body {
+    margin: auto;
+    font-size: 15px;
+    font-family: 'Roboto','NanumBarunGothic',sans-serif;
+    // font-family: 'NotoSansKR','맑은 고딕','Malgun Gothic','나눔고딕','NanumGothic','Noto Sans KR','Source Han Sans',sans-serif;
+    font-weight: 300;
+    color: @default-color;
+}
+a {
+    color: @default-color;
+    text-decoration: none;
+}
+svg, video {
+    vertical-align: top;
+}
+#viewport {
+    padding-top: 50px;
+    max-width: 640px;
+    margin: auto;
+}
+p {
+    margin: 16px 0;
+    word-break: keep-all;
+    font-size: 15px;
+    line-height: 1.6;
+}
