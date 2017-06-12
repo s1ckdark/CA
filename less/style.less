@@ -8,7 +8,7 @@
 @point-color: #d8242c;
 @yellow-color : #fac846;
 @red-color: #b6202a;
-@default-color: #323232;
+@grey-color: #323232;
 @img-url : '/innovation/CA/img';
 .clearfix(){
   &:before,
@@ -24,8 +24,7 @@
     background-size: 200px;
 }
 
-@mobile-small:  ~"only screen and (max-width
-color: @default-color;s: 340px)";
+@mobile-small:  ~"only screen and (max-width: 340px)";
 @mobile-medium: ~"only screen and (max-width: 480px)";
 @mobile:        ~"only screen and (max-width: 768px)";
 @tablet:        ~"only screen and (max-width: 1024px)";
@@ -41,11 +40,11 @@ body {
     font-family: 'Roboto','NanumSquareGothic',sans-serif;
     // font-family: 'NotoSansKR','맑은 고딕','Malgun Gothic','나눔고딕','NanumGothic','Noto Sans KR','Source Han Sans',sans-serif;
     font-weight: 300;
-    color:@default-color;
+    color:@grey-color;
     ;
 }
 a {
-    color: @default-color;
+    color: @grey-color;
     text-decoration: none}
     svg, video {
         vertical-align: top;
@@ -333,7 +332,18 @@ nav {
     .sw-thumbs .swiper-slide-active {
         opacity: 1;
     }
-    }}
+    }
+ #section2_bottom {
+        background-color:@grey-color;
+        background-image:url('@{img-url}/section2_bg.jpg');
+        height:auto;
+        background-size:cover;
+        background-repeat:no-repeat;
+        min-height:300px;
+        height:80%;
+    }
+}
+   
     .section4 {
         .bg_white {
             background-color:#fff;
