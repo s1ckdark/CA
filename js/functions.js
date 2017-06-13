@@ -153,26 +153,27 @@ $(function() {
 function drawIcon($path, $dur, $start){
     TweenMax.staggerFrom($path, $dur, {drawSVG:0}, $start);
 }
-
+TweenMax.set('.mapAnime div', {opacity:0, visibility:'hidden'});
 function section1MapAnime(){
     var map = new TimelineMax();
-    map.from('#mapFrame1', 0.5, {opacity:1});
-    map.from('#mapFrame2', 0.5, {opacity:1});
-    map.from('#mapFrame3', 0.5, {opacity:1});
-    map.from('#mapFrame4', 0.5, {opacity:1});
-    map.from('#mapFrame5', 0.5, {opacity:1});
-    map.from('#mapFrame6', 0.5, {opacity:1});
-    map.from('#mapFrame7', 0.5, {opacity:1});
-    map.from('#mapFrame8', 0.5, {opacity:1});
-    map.from('#mapFrame9', 0.5, {opacity:1});
-    map.from('#mapFrame10', 0.5, {opacity:1});
-    map.from('#mapFrame11', 0.5, {opacity:1});
-    map.from('#mapFrame12', 0.5, {opacity:1});
-    map.from('#mapFrame13', 0.5, {opacity:1});
-    map.from('#mapFrame14', 0.5, {opacity:1});
-    map.from('#mapFrame15', 0.5, {opacity:1});
-    map.from('#mapFrame16', 0.5, {opacity:1});
-    map.from('#mapFrame17', 0.5, {opacity:1});
+
+    map.to('#mapFrame1', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame2', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame3', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame4', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame5', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame6', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame7', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame8', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame9', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame10', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame11', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame12', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame13', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame14', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame15', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame16', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame17', 0.5, {visibility:'visible', opacity:1});
 }
 
 // var section1MapAnime_controller = new ScrollMagic.Controller();

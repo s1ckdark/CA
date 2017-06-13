@@ -298,11 +298,10 @@ nav {
 
 }
 
-
 .section1 {
     .clearfix();
-    #map {float:left;text-align:left;width:480px;margin-right:20px;
-        .mapAnime {display:block;width:480px;height:430px;opacity:0;}
+         #map {float:left;text-align:left;width:480px;margin-right:20px;position:relative;
+        .mapAnime {display:block;width:480px;height:430px;position:absolute;top:0px;left:0;right:0;bottom:0;}
         #mapFrame1 {background-image:url('@{img-url}/1_2_intro_map_ani_01.png');}
         #mapFrame2 {background-image:url('@{img-url}/1_2_intro_map_ani_02.png');}
         #mapFrame3 {background-image:url('@{img-url}/1_2_intro_map_ani_03.png');}
@@ -319,29 +318,36 @@ nav {
         #mapFrame14 {background-image:url('@{img-url}/1_2_intro_map_ani_14.png');}
         #mapFrame15 {background-image:url('@{img-url}/1_2_intro_map_ani_15.png');}
         #mapFrame16 {background-image:url('@{img-url}/1_2_intro_map_ani_16.png');}
-        #mapFrame17 {background-image:url('@{img-url}/1_2_intro_map_ani_17.png');}
-     
+         }
           .map_desc {
+        height:430px;
            float:right;
            width: calc(~"100% - 500px");
-       }
-    heading {    
-      display:flex;
+   }
     
     .clearfix();
     .text_box {
         width:100%;
         height:100%;
+        margin-bottom:50px;
         .clearfix();
     }
     &.bg_yellow {
         background-color:@yellow-color;
 
         .clearfix();
-    .swiper-button-prev {left:-37px;padding:10px;background-color:rgba(0,0,0,0.7);}
-    .swiper-button-next {right:-37px;padding:10px;background-color:rgba(0,0,0,0.7);}
+        .slider {position:relative;}
+    .swiper-slide {position:relative;display:block;background-size:cover;width:1100px;height:580px;
+        .box {position:absolute;bottom:26px;right:28px;width:310px;height:140px;display:inline-block;padding:20px;background-color:rgba(255,255,255,0.7);}}
+    .sw1 {background-image:url('@{img-url}/section1_sw1.jpg');}
+    .sw2 {background-image:url('@{img-url}/section1_sw2.jpg');}
+    .sw3 {background-image:url('@{img-url}/section1_sw3.jpg');}
+    .sw4 {background-image:url('@{img-url}/section1_sw4.jpg');}
+    
+    .swiper-button-prev {left:-47px;padding:10px;background-color:rgba(0,0,0,0.5);}
+    .swiper-button-next {right:-47px;padding:10px;background-color:rgba(0,0,0,0.5);}
     }
-}}}
+}
     .section2 {
    &.bg_white {
         background-color:#fff;
