@@ -150,11 +150,56 @@ $(function() {
     swTop.params.control = swThumbs;
     swThumbs.params.control = swTop;
 }
+function drawIcon($path, $dur, $start){
+    TweenMax.staggerFrom($path, $dur, {drawSVG:0}, $start);
+}
+
+function section1MapAnime(){
+    var map = new TimelineMax();
+    map.from('#mapFrame1', 0.5, {opacity:1});
+    map.from('#mapFrame2', 0.5, {opacity:1});
+    map.from('#mapFrame3', 0.5, {opacity:1});
+    map.from('#mapFrame4', 0.5, {opacity:1});
+    map.from('#mapFrame5', 0.5, {opacity:1});
+    map.from('#mapFrame6', 0.5, {opacity:1});
+    map.from('#mapFrame7', 0.5, {opacity:1});
+    map.from('#mapFrame8', 0.5, {opacity:1});
+    map.from('#mapFrame9', 0.5, {opacity:1});
+    map.from('#mapFrame10', 0.5, {opacity:1});
+    map.from('#mapFrame11', 0.5, {opacity:1});
+    map.from('#mapFrame12', 0.5, {opacity:1});
+    map.from('#mapFrame13', 0.5, {opacity:1});
+    map.from('#mapFrame14', 0.5, {opacity:1});
+    map.from('#mapFrame15', 0.5, {opacity:1});
+    map.from('#mapFrame16', 0.5, {opacity:1});
+    map.from('#mapFrame17', 0.5, {opacity:1});
+}
+
+// var section1MapAnime_controller = new ScrollMagic.Controller();
+// var section1MapAnime = TweenMax.from('#map', .1, {opacity:0});
+// var section1MapAnimeStart = new ScrollMagic.Scene({
+//             triggerElement: "#map",
+//             triggerHook: 0.6,
+//         })
+// .setTween(section1MapAnime)
+// .addTo(section1MapAnime_controller);
+
+var section8IconDrawer_controller = new ScrollMagic.Controller();
+var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
+    var section8IconDrawerStart = new ScrollMagic.Scene({
+            triggerElement: "#hive",
+            triggerHook: 0.6,
+        })
+        .setTween(section8IconDrawer)
+        .addTo(section8IconDrawer_controller);
+
 function init(){
     heroResize();
     heroSlideShow(); 
     section1_swiper();
     section1_swiper_thumb();
+    section1MapAnime();
+    drawIcon('#hive path', .5, .1);
 }
 
 init();
