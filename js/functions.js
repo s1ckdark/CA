@@ -127,34 +127,57 @@ $(function() {
       //  video.play();
     }
 
-    function section1_swiper(){
-    var swiper = new Swiper('.swiper-container', {
+    function sec1_sw_swiper(){
+    var swiper = new Swiper('.sw-swiper', {
     // Disable preloading of all images
     preloadImages: false,
     // Enable lazy loading
-    lazyLoading: true
+    lazyLoading: true,
+      // If we need pagination
+    pagination: '.sw-pagination',
+    // Navigation arrows
+    nextButton: '.ca-swiper-next',
+    prevButton: '.ca-swiper-prev',
+
 }) }  
-    function section1_swiper_thumb(){
-        var swTop = new Swiper('.sw-top', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
+    function sec1_interview_swiper_thumb(){
+        var interviewTop = new Swiper('.interview-top', {
+        nextButton: '.ca-swiper-next',
+        prevButton: '.ca-swiper-prev',
         spaceBetween: 10,
     });
-    var swThumbs = new Swiper('.sw-thumbs', {
+    var interviewThumbs = new Swiper('.interview-thumbs', {
         spaceBetween: 10,
         centeredSlides: true,
         slidesPerView: 'auto',
         touchRatio: 0.2,
         slideToClickedSlide: true
     });
-    swTop.params.control = swThumbs;
-    swThumbs.params.control = swTop;
+    interviewTop.params.control = interviewThumbs;
+    interviewThumbs.params.control = interviewTop;
+}
+function sec6_FoodSlider(){
+    var foodSlider = new Swiper('.foodSlider',{
+    // Disable preloading of all images
+    preloadImages: false,
+    // Enable lazy loading
+    lazyLoading: true,
+    // If we need pagination
+    pagination: '.food-pagination',
+    // Navigation arrows
+    nextButton: '.ca-swiper-next',
+    prevButton: '.ca-swiper-prev',
+    spaceBetween: 10,
+    loop:true
+
+    });
+
 }
 function drawIcon($path, $dur, $start){
     TweenMax.staggerFrom($path, $dur, {drawSVG:0}, $start);
 }
 TweenMax.set('.mapAnime div', {opacity:0, visibility:'hidden'});
-function section1MapAnime(){
+function sec1_MapAnime(){
     var map = new TimelineMax();
 
     map.to('#mapFrame1', 0.5, {visibility:'visible', opacity:1});
@@ -173,7 +196,70 @@ function section1MapAnime(){
     map.to('#mapFrame14', 0.5, {visibility:'visible', opacity:1});
     map.to('#mapFrame15', 0.5, {visibility:'visible', opacity:1});
     map.to('#mapFrame16', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame17', 0.5, {visibility:'visible', opacity:1});
+}
+
+function sec4_AnimeTin(){
+    TweenMax.set('.animeTin', {opacity:0, visibility:'hidden'});
+    var tl = new TimelineMax();
+    tl.to('#animeTin1', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#animeTin2', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#animeTin3', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#animeTin4', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#animeTin5', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#animeTin6', 0.5, {visibility:'visible', opacity:1});
+ }
+
+ function sec4_qa(){
+    event.preventDefault();
+    $(".qaq__title__content").each(function() {
+    if ($(this).hasClass("is-closed")) {
+        var $contents = $(this).find(".qaq__item__content");
+        TweenMax.to($contents, 0, {
+            height: 0
+        })
+    }
+});
+
+function sec2_almondsdrop(){
+     var tl = new TimelineMax({});
+    
+      tl.set("#swing", {y: -200})
+      tl.set("#box", {rotationZ:0})
+      .to("#swing", 1.5, { y:0, ease: Bounce.easeOut, onUpdateParams:["{self}"]}, "swingme")
+      .to("#box", 0.2, { rotationZ:-5, ease:Power1.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"]}, "swingme")
+      .to("#box", 0.4, { rotationZ:3, ease:Power1.easeInOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.2 }, "swingme")
+      .to("#box", 2, { rotationZ:0, ease:Elastic.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.6 }, "swingme")
+      //.to("#swing", .5, { y:-200, ease:Power4.easeInOut, onUpdateParams:["{self}"]});
+
+
+function onUpdate(tween) { 
+  var target = tween.target;
+  /*
+    target.style.webkitTransform = target.style.transform = target.style.msTransform = target.style.MozTransform = 'rotateZ('+(target.rotationZ)+'deg)';
+    */
+  target.rotationZ = 'rotateZ('+(target.rotationZ)+'deg)';
+}
+}
+// Toggle height on click
+$(".qaq__title").click(function() {
+    var $content = $(this).next(".qaq__title__content"),
+        $container = $(this).parent("");
+    // Use is-closed class to determine whether item has been toggled
+    if ($container.hasClass("is-closed")) {
+        TweenMax.set($content, {
+            height: "auto"
+        })
+        TweenMax.from($content, 0.2, {
+            height: 0
+        })
+        $container.removeClass("is-closed");
+    } else {
+        TweenMax.to($content, 0.2, {
+            height: 0
+        })
+        $container.addClass("is-closed")
+    }
+})
 }
 
 // var section1MapAnime_controller = new ScrollMagic.Controller();
@@ -197,9 +283,13 @@ var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
 function init(){
     heroResize();
     heroSlideShow(); 
-    section1_swiper();
-    section1_swiper_thumb();
-    section1MapAnime();
+    sec1_sw_swiper();
+    sec1_interview_swiper_thumb();
+    sec1_MapAnime();
+    sec4_AnimeTin();
+    sec6_FoodSlider();
+    sec4_qa();
+    sec2_almondsdrop();
     drawIcon('#hive path', .5, .1);
 }
 

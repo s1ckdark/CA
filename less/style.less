@@ -20,7 +20,9 @@
 & { *zoom: 1; }
 }
 .sp-img(@position) {
-    background: url('@{img-url}/sprite.png') no-repeat @position;
+    background-image: url('@{img-url}/sprite.png');
+    background-position:@position;
+    background-repeat:no-repeat;
     background-size: 400px;
 }
 
@@ -207,11 +209,22 @@ nav {
         height:20px;
         padding:10px 0 15px;
         background-color:rgba(0,0,0,0.7);
-        display:block;
+        display:inline-block;
         float:left;
         text-align:center;
         color:#fff;
+        span {display:inline-block;width:30px;height:22px;}
+
     } 
+    
+    #vitamin {.sp-img(0px -0px);}
+    #diet {.sp-img(0px -22px);}
+    #food {.sp-img(0px -43px);}
+    #bee {.sp-img(0px -64px);}
+    #vitamin_arrow {.sp-img(-30px -0px);}
+    #diet_arrow {.sp-img(-30px -22px);}
+    #food_arrow {.sp-img(-30px -43px);}
+    #bee_arrow {.sp-img(-30px -64px);}
 }
 /* footer */
 #foot {
@@ -238,6 +251,22 @@ nav {
     margin: 0 auto;
     padding:150px 0;;
 }
+.slider {position:relative;}
+    .swiper-button {position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;padding:10px;}
+    .ca-swiper-prev {left:-47px;background-color:rgba(0,0,0,0.5);
+        .button-prev {display:block;.sp-img(-60px -0px);width:25px;height:44px;}
+}
+    .ca-swiper-next {right:-47px;background-color:rgba(0,0,0,0.5);
+        .button-next {display:block;.sp-img(-60px -44px);width:25px;height:44px;}
+   }
+.swiper-pagination-bullet-active {background:rgb(255,255,255);}
+.swiper-pagination-bullet {background:rgba(255,255,255,0.7);}
 /* main contents */
 .content_wrap {
     position: relative;
@@ -301,7 +330,7 @@ nav {
 .section1 {
     .clearfix();
          #map {float:left;text-align:left;width:480px;margin-right:20px;position:relative;
-        .mapAnime {display:block;width:480px;height:430px;position:absolute;top:0px;left:0;right:0;bottom:0;}
+        .mapAnime {display:block;width:480px;height:420px;position:absolute;top:0px;left:0;right:0;bottom:0;}
         #mapFrame1 {background-image:url('@{img-url}/1_2_intro_map_ani_01.png');}
         #mapFrame2 {background-image:url('@{img-url}/1_2_intro_map_ani_02.png');}
         #mapFrame3 {background-image:url('@{img-url}/1_2_intro_map_ani_03.png');}
@@ -336,7 +365,7 @@ nav {
         background-color:@yellow-color;
 
         .clearfix();
-        .slider {position:relative;}
+
     .swiper-slide {position:relative;display:block;background-size:cover;width:1100px;height:580px;
         .box {position:absolute;bottom:26px;right:28px;width:310px;height:140px;display:inline-block;padding:20px;background-color:rgba(255,255,255,0.7);}}
     .sw1 {background-image:url('@{img-url}/section1_sw1.jpg');}
@@ -344,8 +373,7 @@ nav {
     .sw3 {background-image:url('@{img-url}/section1_sw3.jpg');}
     .sw4 {background-image:url('@{img-url}/section1_sw4.jpg');}
 
-    .swiper-button-prev {left:-47px;padding:10px;background-color:rgba(0,0,0,0.5);}
-    .swiper-button-next {right:-47px;padding:10px;background-color:rgba(0,0,0,0.5);}
+
     }
 }
     .section2 {
@@ -391,12 +419,19 @@ nav {
     }
  #section2_bottom {
         background-color:@grey-color;
-        background-image:url('@{img-url}/section2_bg.jpg');
-        height:auto;
-        background-size:cover;
-        background-repeat:no-repeat;
+        height:600px;
         max-height:auto;
         height:600px;
+        position:relative;
+        .animeTin {display:block;height:600px;background-repeat:no-repeat;position:absolute;}
+        #animeTin1 {background-image:url('@{img-url}/tin_img_01.png');top:50%;margin-top:-188px;left:200px;right:0;bottom:0;}
+        #animeTin2 {background-image:url('@{img-url}/tin_img_02.png');top:50%;margin-top:-188px;left:200px;right:0;bottom:0;}
+        #animeTin3 {background-image:url('@{img-url}/tin_img_03.png');top:50%;margin-top:-188px;left:200px;right:0;bottom:0;}
+        #animeTin4 {background-image:url('@{img-url}/tin_img_04.png');top:50%;margin-top:-188px;left:200px;right:0;bottom:0;}
+        #animeTin5 {background-image:url('@{img-url}/tin_img_05.png');top:50%;margin-top:-188px;left:200px;right:0;bottom:0;}
+        #animeTin6 {background-image:url('@{img-url}/tin_img_06.png');top:0;left:0;right:0;bottom:0;}
+        #section2_bottom_content {margin-left:50%;color:#fff;text-align:center;}
+
     }
 }
    
@@ -406,15 +441,64 @@ nav {
             .clearfix();
 
                         }
+    .section4_bridge {background-image:url('@{img-url}/section4_bridge.jpg');display:block;width:100%;height:533px;}
+        #q1 {display:block;background-color:#e3e26e;width:100%;height:auto;padding:10px 0;color:#323232;}
+
+        #q2 {display:block;background-color:#d2d157;width:100%;height:auto;padding:10px 0;color:#323232;}
+        #q3 {display:block;background-color:#b7b769;width:100%;height:auto;padding:10px 0;color:#323232;}
+                     .qaq { 
+            &__title {
+                display:inline-block;
+                cursor: pointer;
+                position: relative;
+                &__content {
+                      overflow: hidden;
+                     height: auto;
+                }
+
+            }
+
+        }
+
                     }  
+
     .section6 {
         &.bg_grey{
             background-color:#282828;
             color:#fff;
             .clearfix();
+        .almondShape {background-color:#1c1c1c;width:100%;height:400px;display:block;
+            .clearfix();
+            .shapeFeat {float:left;width:20%;margin-top:-100px;
+                p {display:none;}
+            }
+        }
+        #section6_bridge {display:block;background-color:#c5c1c0;background-image:url('@{img-url}/section6_br.png');background-repeat:repeat-x;width:100%;height:230px;
+        .inner {padding:30px 0 20px;}}
+        #icon_cheftalk {.sp-img(-65px -154px);width:40px;height:40px;display:block;margin:0 auto;}
+        .foodInfo {margin-bottom:50px;.clearfix();
+        .foodDesc {float:left;width:60%;text-align:left;}
+        .foodVideo {float:right;width:40%;}       
+}
+    .foodSlider {overflow:visible;}
+    .swiper-slide {display:blocRk;width:1100px;height:700px;}
+    .food0 {background-image:url('@{img-url}/6_5_food_img_1_0.jpg');}
+    .food1 {background-image:url('@{img-url}/6_5_food_img_1_1.jpg');}
+    .food2 {background-image:url('@{img-url}/6_5_food_img_1_2.jpg');}
+    .food3 {background-image:url('@{img-url}/6_5_food_img_1_3.jpg');}
+    .food4 {background-image:url('@{img-url}/6_5_food_img_2_1.jpg');}
+    .food5 {background-image:url('@{img-url}/6_5_food_img_2_2.jpg');}
+    .food6 {background-image:url('@{img-url}/6_5_food_img_2_3.jpg');}
+    .food7 {background-image:url('@{img-url}/6_5_food_img_3_1.jpg');}
+    .food8 {background-image:url('@{img-url}/6_5_food_img_3_2.jpg');}
+    .food9 {background-image:url('@{img-url}/6_5_food_img_3_3.jpg');}
+    .food10 {background-image:url('@{img-url}/6_5_food_img_4_1.jpg');}
+    .food11 {background-image:url('@{img-url}/6_5_food_img_4_2.jpg');}
+    .food12 {background-image:url('@{img-url}/6_5_food_img_4_3.jpg');}
+
 
 }
-                    }  
+       }  
     .section7 {
             .clearfix();
 }
@@ -429,11 +513,11 @@ nav {
                     .clearfix();
                     li.item {float:left;width:25%;min-height:300px;
                         span {display:block;margin:0 auto;}
-                        i.line {border:1px solid #000;width:100%;height:1px;}
-                   .beeEffect1 {.sp-img(-148px -154px);width:110px;height:110px;}
+                        i.line {background:#000;display:block;width:100%;height:1px;}
+                   .beeEffect1 {.sp-img(-148px -152px);width:110px;height:140px;}
                    .beeEffect2 {.sp-img(-256px -151px);width:140px;height:140px;}
-                   .beeEffect3 {.sp-img(2px -270px);width:120px;height:110px;}
-                   .beeEffect4 {.sp-img(-122px -284px);width:230px;height:100px;}
+                   .beeEffect3 {.sp-img(2px -270px);width:120px;height:140px;}
+                   .beeEffect4 {.sp-img(-122px -284px);width:230px;height:140px;}
                         }}
                         }}
           .bg_section8 {background-image:url('@{img-url}/bg_section8.jpg');width:100%;height:800px;background-size:cover;}
