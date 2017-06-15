@@ -176,7 +176,7 @@ function sec6_FoodSlider(){
 function drawIcon($path, $dur, $start){
     TweenMax.staggerFrom($path, $dur, {drawSVG:0}, $start);
 }
-TweenMax.set('.mapAnime div', {opacity:0, visibility:'hidden'});
+TweenMax.set('.mapAnimation div', {opacity:0, visibility:'hidden'});
 function sec1_MapAnime(){
     var map = new TimelineMax();
 
@@ -196,6 +196,7 @@ function sec1_MapAnime(){
     map.to('#mapFrame14', 0.5, {visibility:'visible', opacity:1});
     map.to('#mapFrame15', 0.5, {visibility:'visible', opacity:1});
     map.to('#mapFrame16', 0.5, {visibility:'visible', opacity:1});
+    map.to('#mapFrame17', 0.5, {visibility:'visible', opacity:1,top:220});
 }
 
 function sec4_AnimeTin(){
@@ -206,44 +207,27 @@ function sec4_AnimeTin(){
     tl.to('#animeTin3', 0.5, {visibility:'visible', opacity:1});
     tl.to('#animeTin4', 0.5, {visibility:'visible', opacity:1});
     tl.to('#animeTin5', 0.5, {visibility:'visible', opacity:1});
+    tl.set('.animeTin', {opacity:0})   
     tl.to('#animeTin6', 0.5, {visibility:'visible', opacity:1});
+    tl.to('#innerBox', 0.5, {visibility:'visible', opacity:1});
  }
 
  function sec4_qa(){
     event.preventDefault();
-    $(".qaq__title__content").each(function() {
+    $(".qaq").each(function() {
     if ($(this).hasClass("is-closed")) {
-        var $contents = $(this).find(".qaq__item__content");
+        var $contents = $(this).find(".qaq__title__content");
         TweenMax.to($contents, 0, {
             height: 0
         })
     }
 });
 
-function sec2_almondsdrop(){
-     var tl = new TimelineMax({});
-    
-      tl.set("#swing", {y: -200})
-      tl.set("#box", {rotationZ:0})
-      .to("#swing", 1.5, { y:0, ease: Bounce.easeOut, onUpdateParams:["{self}"]}, "swingme")
-      .to("#box", 0.2, { rotationZ:-5, ease:Power1.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"]}, "swingme")
-      .to("#box", 0.4, { rotationZ:3, ease:Power1.easeInOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.2 }, "swingme")
-      .to("#box", 2, { rotationZ:0, ease:Elastic.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.6 }, "swingme")
-      //.to("#swing", .5, { y:-200, ease:Power4.easeInOut, onUpdateParams:["{self}"]});
 
-
-function onUpdate(tween) { 
-  var target = tween.target;
-  /*
-    target.style.webkitTransform = target.style.transform = target.style.msTransform = target.style.MozTransform = 'rotateZ('+(target.rotationZ)+'deg)';
-    */
-  target.rotationZ = 'rotateZ('+(target.rotationZ)+'deg)';
-}
-}
 // Toggle height on click
 $(".qaq__title").click(function() {
     var $content = $(this).next(".qaq__title__content"),
-        $container = $(this).parent("");
+        $container = $(this).parent(".qaq");
     // Use is-closed class to determine whether item has been toggled
     if ($container.hasClass("is-closed")) {
         TweenMax.set($content, {
@@ -262,6 +246,26 @@ $(".qaq__title").click(function() {
 })
 }
 
+function sec2_almondsdrop(){
+     var tl = new TimelineMax({});
+    
+      tl.set(".almondsSwing", {y: -200})
+      tl.set("#box", {rotationZ:0})
+      .to("#swing", 1.5, { y:0, ease: Bounce.easeOut, onUpdateParams:["{self}"]}, "swingme")
+      .to("#box", 0.2, { rotationZ:-5, ease:Power1.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"]}, "swingme")
+      .to("#box", 0.4, { rotationZ:3, ease:Power1.easeInOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.2 }, "swingme")
+      .to("#box", 2, { rotationZ:0, ease:Elastic.easeOut, onUpdate:onUpdate, onUpdateParams:["{self}"], delay:0.6 }, "swingme")
+      //.to("#swing", .5, { y:-200, ease:Power4.easeInOut, onUpdateParams:["{self}"]});
+
+
+function onUpdate(tween) { 
+  var target = tween.target;
+  /*
+    target.style.webkitTransform = target.style.transform = target.style.msTransform = target.style.MozTransform = 'rotateZ('+(target.rotationZ)+'deg)';
+    */
+  target.rotationZ = 'rotateZ('+(target.rotationZ)+'deg)';
+}
+}
 // var section1MapAnime_controller = new ScrollMagic.Controller();
 // var section1MapAnime = TweenMax.from('#map', .1, {opacity:0});
 // var section1MapAnimeStart = new ScrollMagic.Scene({
@@ -271,6 +275,62 @@ $(".qaq__title").click(function() {
 // .setTween(section1MapAnime)
 // .addTo(section1MapAnime_controller);
 
+function initPlayers(num) {
+  for (var i = 0; i < num; i++) {
+    (function() {
+      // Variables
+      // ----------------------------------------------------------
+      // audio embed object
+      var playerContainer = document.getElementById('playerContainer'),
+        player = document.getElementById('player'),
+        isPlaying = false,
+        playBtn = document.getElementById('playBtn');
+
+      // Controls Listeners
+      // ----------------------------------------------------------
+      if (playBtn != null) {
+        playBtn.addEventListener('click', function() {
+          togglePlay()
+        });
+      }
+      // Controls & Sounds Methods
+      // ----------------------------------------------------------
+      function togglePlay() {
+        if (player.paused === false) {
+          player.pause();
+          isPlaying = false;
+          $('#playBtn').removeClass('pause');
+          // $('.play_state').addClass('paused').removeClass('playing');
+          $('.chef_video').parent().click(function () {
+    if($(this).children(".video").get(0).paused){
+        $(this).children(".video").get(0).play();
+        $(this).children(".playpause").fadeOut();
+    }else{
+       $(this).children(".video").get(0).pause();
+        $(this).children(".playpause").fadeIn();
+    }
+});
+        } else {
+          player.play();
+          $('#playBtn').addClass('pause');
+          // $('.play_state').addClass('playing').removeClass('paused');
+
+          isPlaying = true;
+        }
+      }
+    }());
+  }
+}
+
+function accordainSlider(){
+     var tl = new TimelineMax({});
+    tl.set(".slideAccordian__item", {opacity:0,left:0})
+    .fromTo('.accordian1', 1, {left:0}, {left:0, opacity:1},0)
+    .fromTo('.accordian2', 1, {left:0}, {left:'25%', opacity:1},1)
+    .fromTo('.accordian3', 1, {left:0}, {left:'50%', opacity:1},2)
+    .fromTo('.accordian4', 1, {left:0}, {left:'75%', opacity:1},3)
+
+}
 var section8IconDrawer_controller = new ScrollMagic.Controller();
 var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
     var section8IconDrawerStart = new ScrollMagic.Scene({
@@ -280,6 +340,22 @@ var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
         .setTween(section8IconDrawer)
         .addTo(section8IconDrawer_controller);
 
+function scrollmagic($trigger, $duration, $func){
+    // init ScrollMagic Controller
+var controller = new ScrollMagic.Controller();
+
+// Scene Handler
+var scene1 = new ScrollMagic.Scene({
+  triggerElement: "#nav", // point of execution
+   duration: $('body').height(), // pin element for the window height - 1
+  // triggerHook: 0, // don't trigger until #pinned-trigger1 hits the top of the viewport
+  reverse: true // allows the effect to trigger when scrolled in the reverse direction
+})
+.setPin("#nav")// the element we want to pin
+.setClassToggle("#nav", "fixed")
+.addIndicators({name: "1 (duration: 78)"})
+.addTo(controller);
+}
 function init(){
     heroResize();
     heroSlideShow(); 
@@ -289,8 +365,11 @@ function init(){
     sec4_AnimeTin();
     sec6_FoodSlider();
     sec4_qa();
-    sec2_almondsdrop();
+    accordainSlider();
+    // sec2_almondsdrop();\
+    drawIcon('.specItem path', .1, .1);
     drawIcon('#hive path', .5, .1);
+    pinNav();
 }
 
 init();

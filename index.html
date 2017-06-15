@@ -269,23 +269,14 @@
         </div>
         <div class="scroll_down">
             <div class="icon">
-           <!--  <svg width="10" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1">
-<circle cx="5" cy="10" r="3" id="scroll_indicator"/>
-<animateTransform attributeName="transform"
-             type="scale"
-             begin="0s"
-             dur="1s"
-             repeatCount="indefinite"
-        /> 
-</svg>-->
             </div>
             <span>SCROLL</span>
         </div>
-        <nav>
-            <a href="#"><span id="vitamin"></span>Vitamin E<span id="vitamin_arrow"></span></a>
-            <a href="#"><span id="diet"></span>DIET<span id="diet_arrow"></span></a>
-            <a href="#"><span id="food"></span>FOOD<span id="food_arrow"></span></a>
-            <a href="#"><span id="bee"></span>BEE<span id="bee_arrow"></span></a>
+        <nav id="nav">
+            <a href="#"><span id="vitamin" class="nav_left_icon"></span>Vitamin E<span id="vitamin_arrow"></span></a>
+            <a href="#"><span id="diet" class="nav_left_icon"></span>DIET<span id="diet_arrow"></span></a>
+            <a href="#"><span id="food" class="nav_left_icon"></span>FOOD<span id="food_arrow"></span></a>
+            <a href="#"><span id="bee" class="nav_left_icon"></span>BEE<span id="bee_arrow"></span></a>
         </nav>
      </header>
     <!--main contents-->
@@ -294,7 +285,7 @@
             <div class="inner">
                 <div class="text_box">
                     <div id="map">
-                        <div class="mapAnime">
+                        <div class="mapAnimation">
                         <div id="mapFrame1" class="mapAnime"></div>
                         <div id="mapFrame2" class="mapAnime"></div>
                         <div id="mapFrame3" class="mapAnime"></div>
@@ -311,10 +302,17 @@
                         <div id="mapFrame14" class="mapAnime"></div>
                         <div id="mapFrame15" class="mapAnime"></div>
                         <div id="mapFrame16" class="mapAnime"></div>
+                        <div id="mapFrame17" class="mapAnime">
+                        <h2>전세계 아몬드 생산량</h2>
+                            <p>아몬드는 미국 캘리포니아의 맑은 공기와 햇살 속에 
+담긴 에너지를 품고 있다. 전세계 생산량의 82%, 
+우리나라에서 소비되는 아몬드의 99%가 캘리포니아 아몬드다.</p>
+                        </div>
                     </div>
+
                     </div>
                 <div class="map_desc">
-                    <h2 class="section_tit">
+                    <h2 class="section_title">
                         <span class="txt">당신을 위한 씨앗, 꽃, 열매, 나무!</span>
                     </h2>
                     <p>에너지로 가득 찬 갈색 씨앗. 이것이 아몬드의 전부는 아니다. 
@@ -328,10 +326,32 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide sw1"><span class="box"></span></div>
-                    <div class="swiper-slide sw2"><span class="box"></span></div>
-                    <div class="swiper-slide sw3"><span class="box"></span></div>
-                    <div class="swiper-slide sw4"><span class="box"></span></div>
+                      <div class="swiper-slide sw0">
+                            <h2>아몬드의 생애주기</h2>
+                        </div>
+                    <div class="swiper-slide sw1"><span class="sliderbox">
+                            <h2>개화</h2>
+                            <span>벚꽃만큼이나 화려하고 아름다운 아몬드꽃. 
+2월 중순부터 개화해 3월 중순까지 핀다. 
+꿀벌을 활용해 수분을 해서 열매를 맺는다. 
+꿀벌은 아몬드 생산에 꼭 필요한 동반자이다. </span>                    </span></div>
+                    <div class="swiper-slide sw2"><span class="sliderbox">
+                            <h2>과육의 성장</h2>
+                            <span>6월 말까지 열매가 커나간다. 가까이서 보면 
+복숭아, 살구와 비슷한 형태다. 과육은 
+가축의 사료로 쓰인다. 우리에게 필요한 것은 
+과육 속의 씨앗이다. </span>                    </span></div>
+                    <div class="swiper-slide sw3"><span class="sliderbox">
+                            <h2>외피의 파열</h2>
+                            <span>7월을 지나며 외피가 부풀어 터지고, 
+담황색으로 변한다. 아몬드 알맹이가 마르기 
+시작한다. 수확의 시기가 다가온다. </span>                    </span></div>
+                    <div class="swiper-slide sw4"><span class="sliderbox">
+                            <h2>수확</h2>
+                            <span>8월부터 10월 중순까지 수확을 한다. 과육과 
+껍질을 벗기면 비로소 우리에게 친숙한 
+아몬드를 만날 수 있다. 외피는 소의 사료로, 
+껍질은 가축의 깔개로 사용한다. 버릴 게 없다.</span>                    </span></div>
                 </div>
                 <!-- If we need pagination -->
                 <div class="sw-pagination swiper-pagination"></div>
@@ -346,8 +366,8 @@
             </section>
          <section id="section2" class="section section2 lazy bg_white">
             <div class="inner">
-                <h2>Vitamin E</h2>
-                <h2>아몬드 23알… 하루 권장 비타민 E 73% 함유</h2>
+                <h3 class="section2_title">Vitamin E</h3>
+                <h2 class="section_copyright pointline">아몬드 23알… 하루 권장 비타민 E 73% 함유</h2>
                 <div class="text_box">
                 <div class="title"><h3>피부에 좋은 비타민 E</h3></div>
                 <div class="desc"><p>아몬드는 피부 미용과 노화 억제에 도움을 주는 비타민E의 보고다. 아몬드 적정 섭취량은 약 23알(30g) 정도. 주먹 한 줌 분량이다. 여기엔 알파-토코페롤 비타민 E 7.8mg이 담겨있다. 한국인의 하루 비타민 E 권장 섭취량의 73%를 제공한다. 비타민 E는 
@@ -359,10 +379,12 @@
                 <div class="swiper-container interview-top">
                 <div class="swiper-wrapper">
                        <!-- Slides -->
-                    <div class="swiper-slide"><img src="./img/section1_sw1.jpg"></div>
-                    <div class="swiper-slide"><img src="./img/section1_sw2.jpg"></div>
-                    <div class="swiper-slide"><img src="./img/section1_sw3.jpg"></div>
-                    <div class="swiper-slide"><img src="./img/section1_sw4.jpg"></div>
+                    <div class="swiper-slide"><img src="./img/Cosmopolitan_almonds_01.jpg"></div>
+                    <div class="swiper-slide"><img src="./img/Cosmopolitan_almonds_02.jpg"></div>
+                    <div class="swiper-slide"><img src="./img/Cosmopolitan_almonds_03.jpg"></div>
+                    <div class="swiper-slide"><img src="./img/Cosmopolitan_almonds_04.jpg"></div>
+                    <div class="swiper-slide"><img src="./img/Cosmopolitan_almonds_05.jpg"></div>
+                  
                 </div>
                 <div class="interview-pagination swiper-pagination"></div>  
                 </div>
@@ -388,13 +410,26 @@
         <div id="animeTin4" class="animeTin"></div>
         <div id="animeTin5" class="animeTin"></div>
         <div id="animeTin6" class="animeTin"></div>
+        <div id="innerBox" class="animeTin">
+            <h2>하루 적정 섭취량</h2>
+            <i class="line"></i>
+            <span class="pointnum">23</span>알<br>
+            <span class="weight">30g</span>
         </div>
         <div id="section2_bottom_content">
         <h2>하루 23알 챙겨먹기</h2>
         <div class="section2_content">
 <div id="almondsdrop">
     <div class="almondsSwing"></div>
+    <i class="line"></i>
+    <div class="almonds23_icon">
+        <h2><span class="countip">tip</span>23알 세는 방법</h2>
+        <div class="icon_section">
+            <div class="icon_section__item__icon1 icon_section__item"></div>
+            <div class="icon_section__item__icon2 icon_section__item"></div>
+            <div class="icon_section__item__icon3 icon_section__item"></div>
 </div>
+
         </div>
     </div>
     </div>
@@ -412,41 +447,218 @@
 
         <div class="bg_white">
                 <div class="inner">
-            <h3>DIET</h3>
-            <h3>식사 20분 전 아몬드 먹으면 생기는 일</h3>
-             <div class="text_box">
-                <div class="title"><h3>공복감 줄어<br>식욕 감소</h3></div>
-                <div class="desc"><p>아몬드는 다이어트의 친구다. 고소한 풍미와 씹는 재미와 더불어 공복감을 줄여주고 포만감을 선사한다. 칼로리는 비교적 적으면서도 마그네슘, 아연, 비타민 B2 등 필수 영양소 11가지를 함유한 아몬드는 다이어트 식단에도 잘 어울린다.
+            <h3 class="section4_title">DIET</h3>
+            <h3 class="section_copyright greenline">식사 20분 전 아몬드 먹으면 생기는 일</h3>
+             <div class="text_box almondsSpec">
+                <div class="col-3 title"><h3>공복감 줄어<br>식욕 감소</h3></div>
+                <div class="col-3 desc"><p>아몬드는 다이어트의 친구다. 고소한 풍미와 씹는 재미와 더불어 공복감을 줄여주고 포만감을 선사한다. 칼로리는 비교적 적으면서도 마그네슘, 아연, 비타민 B2 등 필수 영양소 11가지를 함유한 아몬드는 다이어트 식단에도 잘 어울린다.
 2013년 137명의 대상으로 아몬드의 포만감을 측정하는 실험을 했다. 아몬드를 간식으로 섭취했을 때 식욕이 뚜렷하게 감소했다는 결과가 나왔다. 이 내용은 ‘유럽 저널 오브 뉴트리션’에 게재됐다.</p></div>
+<div class="col-3 spec">
+    <div class="bg_spec"></div>
+    <div class="spec1 specItem">
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="284px" height="261px">
+<image  x="0px" y="0px" width="284px" height="261px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAAEFCAMAAAAG86iBAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACr1BMVEX////r6lfr6lfr6lfr6lfr6lfAvhK/vRC/vRDr6le/vRG/vRDr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6le/vRDr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6lfr6le/vRDr6lf///8T/o2BAAAA4nRSTlMAAAMwD4SquwvX4w8rf9Mme80idcoe/nHEGv1svxf8Z7sT+2K2EPlesQ34WawL9VOoCPNQogfwSp4F7UaZ6kGVAuY9jwHjN4veNIbaLoHVKn3QJXjLIHPHHG/CGGq9FWW5EfphtFyvDPZXqgr0UqbxTqAG70idBOtEl+g/k+Q6juA1itwx2CwnziMfxRvAaBS3Xw6tVQmjS+6aQueQOIzf4ocvgtt+JNF5Ich0LU1wa5YZ0r5mWBKktV1j96vJ8qFJ7FuYQCnlO2nh3TLZgNbUKM92xm02vJuyWqepUZRMn0dDToqidgAAAAFiS0dEAIgFHUgAAAAHdElNRQfhBg8VAgWeXnDnAAAGZUlEQVR42u3d+VeUZRjGcR/Cds1Cx9IkXEJCAZcgyUjSgTJLTbRI1FzKJcyUSi3LSq00M0tbTNpIsyIys4XSStuzfdf25flHOqghM8w17/PMDOm57+v7B3jgc975Ye7jy9WunUvGszSnf1VInjZHpR/uH/gIxml/9DESOrZNcI47/h8JndAWOCda4sA6EAfXkTiwkyxxYJ2IgzuZOLBTLHFgGcTBdSYOrEuIOLCuljiwU4kDO60bcWDdLXFgpxMH1iOTOLAzLHFgWcSB9exFHFhvSxxYH+LAzswmDqyvJQ4shziws3KJA+tniQPrTxxYXj5xYAWWOLABxIENHEQc2GBLHNjZxIEVFhEHdo4lDmwIcWDF5xIHNtQSB3YecWBpJcSBnW+JAxtGHFjpBcSBDbfEgY0gDixcRhxYuSUO7ELi4C4iDmykJQ7sYuLgRhEHdoklDuxS4uBGEwc2xhIHNpY4uMuIAxtniQOrIA5uvGQck1wTLHFglxMHdwVxYJUh4sCutMSBTSQOrKobcWCTLHFgk4kDm5JJHNhVljiwqcSBTZtOHNgMSxzY1cSBpecSB3aNJQ5sJnFgs2YTBzbHEgd2LXFg1XOJA7vOEgc2jziwwuuJA5tviQNbQBxYzQ3Egd1oiQO7iTiwhYuIA1tsiQO7mTiw0luIA1tiiQO7lTj4U3UbcWBLg2w049xOHFj4DuLA7gy0UYyzjDi45cSBrQi20YvTnji4u4gDu9vBRi1OB+LgOhIHdo+LjVacTsTBrSQObJWTjVKcDOLgOhMHdm+IOLCubjY6cVYTB3ZfN+LAujvaqMRZQxxYD9dPlUac+11tNOJkEQe2thdxYL2dbRTiPEAcWPP2LXFa96C7jT6cHOLA1uUSB9bPw0YdznriwFps3xInuod8bLThDCAO7OFBxIEN9rJRhvMIcWAR27fEiexRPxtdOEOIAyveQBzYUE8bVTiPEQcWtX1LnJZt9LXRhDOMOLDSWuLAhnvbKMJ5nDiwVtu3xDnUE/42enCeJA7uKeLARiZgU/v04f69/iecOn+b/HLjtil2xBeEM8rbJlRglOA84//gVBgtOJu8bRYYNTijfW0m16jBGeNrs7mnUYPzrKfNoi1GD85zfjbZG40enHF+NravUYTzvJ9NndGEM97Lpn9YE84LXjb11UYTzos+NmVVRhVOvYdNUYNRhVPp+KJ0U5kvGV04Wz0enJeNMpyJ7jbbjDKcV5xf6bR90rThTHK22Z5utOG86mpT0sVow4Hbt9Hllxt1OK852oReN/pwpjriVBh9OG9Md7NpDCvEmeFms6bGKMR508lm8xSjECfd6ZXOoi1GI85bLjbNJ2NlODNdcHYYlTizdjrY1BmdOHMcbHLCSnHeDrZ5p9roxIm7fXugskqjFKcg0GZug9GKMy/IJnO+0YpT+G4QzlajFmd+kM02oxdnV4BNVppenIDt2xgnY0U4u+PblKwKtBGME3/7dmd5sI1cnIXvxbMJve9gIxcn/vbtWBcbuTgfxLNpDKvGSYu3fbu6xslGLM6HcWzQyVgNTpzt26KPHG2k4pR+DG3wyVgLzif4wfnU2UYqDt6+XeZuIxQnvAfZ5AR+2xSPA7dvV1Z72AjFQdu38U/GSnA+i22Tv8LLRibO57Ftgk7GOnDA9m2Gp41MnC9i2gSejFXgxN6+nez4bVM4zpexbL4KPhmrwPk6hk3JFn8biTjfxLDJXpqAjUScGNu3bidjDTjftsbZlJCNQJwY27eOJ2MFON+1sqkfmJiNQJxW27fLXU/G8nEmRL/SWdSQqI08nOjt28zFCdvIw/k+CsfjZCweJ3r7dkQSNuJwfoi08ToZi8eJ3L7dnpeMjTScqohPlefJWDpOxPZt/o/J2UjD+anlt03fk7FwnIjt24qkYOTh7GhhszdpG2E4LbZvEzgZy8aZduhF6c0JnIxl4xzavk3oZCwbZ1/zyXhJKmxE4TRv3yZ4MhaN8/N/D05damxE4aw/aPNLgidjyTh5sw+ejL3+g5ISnIPbt3sSPhlLxvk12ZOxYJwD27eZu1NnIwjnt6RPxoJxGptsfk+ljRyc/du3+5I6GcvF+cM6vdOqE+dPa2uTPBmLxSneEPPPIBKnCeev/cs5xImJszcFJ2OpOGklu1JvIwXn71ScjKXidF3bBjZScNa1hY0QnH8BbM/8/2W4HN8AAAAASUVORK5CYII=" />
+</svg>
+    </div>
+    <div class="spec2 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="124.5px" height="73.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.593,70.969 L81.580,1.057 L122.573,1.057 "/>
+</svg><span>비타민 E 7.7mg</span>
+    </div>
+    <div class="spec3 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="116.5px" height="65.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.592,62.939 L73.580,1.016 L114.573,1.016 "/>
+</svg><span>마그네슘 81mg</span>
+    </div>
+    <div class="spec4 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="110.5px" height="59.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.591,56.902 L67.580,0.974 L108.573,0.974 "/>
+</svg><span>단백질 6g</span>
+    </div>
+    <div class="spec5 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="103.5px" height="54.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.590,51.868 L60.580,0.932 L101.573,0.932 "/>
+</svg><span>칼슘 81g</span>
+    </div>
+    <div class="spec6 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="100.5px" height="53.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.589,50.830 L57.580,0.893 L98.573,0.893 "/>
+</svg><span>구리 0.3mg</span>
+    </div>
+    <div class="spec7 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="99.5px" height="50.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.589,47.790 L56.580,0.849 L97.573,0.849 "/>
+</svg><span>철분 1.0mg</span>
+    </div>
+    <div class="spec8 specItem">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="108.5px" height="58.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.591,56.738 L65.580,0.807 L106.573,0.807 "/>
+</svg><span>망간 0.7mg</span>
+    </div>
+     <div class="spec9 specItem">
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="124.5px" height="73.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.593,70.969 L81.580,1.057 L122.573,1.057 "/>
+</svg><span>인 144mg</span>
+</div>
+    <div class="spec10 specItem"">
+        <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="121.5px" height="57.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.593,55.698 L78.580,0.766 L119.573,0.766 "/>
+</svg><span>아연 0.9mg</span>
+    </div>
+   
+    <div class="spec11 specItem"">
+    <svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="129.5px" height="43.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.594,40.678 L86.580,0.728 L127.573,0.728 "/>
+</svg><span>나이이신 2mg</span>
+</div>
+    <div class="spec12 specItem"">
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="133.5px" height="19.5px">
+<path fill-rule="evenodd"  stroke="rgb(164, 163, 53)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M0.595,16.667 L90.580,0.687 L131.573,0.687 "/>
+</svg><span>비타민 B2 0.3mg</span></div>
+</div>
 </div>
 <div class="almondsEffect">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
+        <div class="slideAccordian">
+            <div class="accordian1 slideAccordian__item">
+                <div class="slideAccordian__item__a">
+                            <i class="boxarrow boxarrow__1"></i>
+                <i class="icon_almonds"></i>
+                <h2>아몬드를<br>먹는 사람은...</h2>
+                <div id="corp">HNHANES 리서치</div>
+                </div>
+            </div>
+            <div class="accordian2 slideAccordian__item">
+                    <div class="slideAccordian__item__b">
+                    <i class="boxarrow__2 boxarrow"></i>
+                    <h2>설탕을 덜 먹는다</h2>
+                    <i class="line"></i>
+                    <i class="icon_sugar"></i>
+                    <span class="subtitle">하루 각설탕 소비량</span>
+                    <div class="textspec">
+                    <div class="textspec_left">
+                    <span class="smallnum">14.2</span>개<br>
+                    <span class="target">아몬드 섭취자</span>
+                    </div>
+
+                    <div class="textspec_compare"><i class="icon_arrow_prev"></i></div>
+                    <div class="textspec_right">
+                    <span class=bignum">19.2개</span><br>
+                    <span class="target">아몬드 비섭취자</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordian3 slideAccordian__item">
+                <div class="slideAccordian__item__c">
+                     <i class="boxarrow__3 boxarrow"></i>
+                    <h2>더 활발하다</h2>
+                    <i class="line"></i>
+                    <i class="icon_excersie"></i>
+                    <span class="subtitle">활발한 활둉 비율</span>
+                     <div class="textspec">
+                    <div class="textspec_left">
+                    <span class="bignum">53%</span><br>
+                    <span class="target">섭취자</span>
+                    </div>
+
+                    <div class="textspec_compare"><i class="icon_arrow_next"></i></div>
+                    <div class="textspec_right">
+                    <span class="smallnum">36.6%</span><br>
+                    <span class="target">비섭취자</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordian4 slideAccordian__item">
+                    <div class="slideAccordian__item__d">
+
+                    <h2>담배를 덜 핀다</h2>
+                    <i class="line"></i>                    
+                    <i class="icon_smoke"></i>
+                    <span class="subtitle">흡연률</span>
+                    <div class="textspec">
+                    <div class="textspec_left">
+                    <span>8.5%</span><br>
+                    <span class="target">섭취자</span>
+                    </div>
+
+                    <div class="textspec_compare"><i class="icon_arrow_prev"></i></div>
+                    <div class="textspec_right">
+                    <span>24.6%</span><br>
+                    <span class="target">비섭취자</span>
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
 <div class="section4_bridge"></div>
      <div class="text_box">
         <div class="title"><h3>아몬드와 함께하는<br>다이어트 Q&A</h3></div>
         <div class="desc">
             <ul>
-                <li class="qaq" id="q1"><h2 class="qaq__title"><span>Q1</span>아몬드는 몇 칼로리인가요</h2>
-                    <div class="qaq__title__content"><p><span>A</span>
+                <li class="qaq is-closed" id="q1"><h2 class="qaq__title"><span class="qa_title">Q1</span>아몬드는 몇 칼로리인가요</h2>
+                    <div class="qaq__title__content"><p><b>A</b>
                             아몬드는 100g당 575kcal입니다. 호두(654kcal)나 헤이즐넛(628kcal)보다 낮은 편입니다. 23알을 먹는다면 약 132kcal입니다. 아몬드는 식이섬유, 비타민 E, 리보플라빈, 나이아신 함유율이 매우 높은 영양적 효능을 인정받고 있습니다. </p>
                     </div>
                 </li>
-                <li class="qaq" id="q2"><h2 class="qaq__title"><span>Q2</span>아몬드가 다이어트에 도움이 되나요</h2>
-                        <div class="qaq__title__content"><p><span>A</span>
+                <li class="qaq is-closed" id="q2"><h2 class="qaq__title"><span class="qa_title">Q2</span>아몬드가 다이어트에 도움이 되나요</h2>
+                        <div class="qaq__title__content"><p><b>A</b>
                            2002년 재밌는 실험을 했습니다. 25~70세 성인 81명에게 6개월 동안 평소 먹는 식사에 
 46알의 아몬드를 더해서 먹도록 했습니다. 영국 영양저널에 발표된 논문을 보면 실험 참가자의 체중에는 변화가 없었습니다. 체질량지수가 높은 참가자는 약간의 체중이 감소하기도 했죠.</p>
                     </div>
                 </li>
-                <li class="qaq" id="q3"><h2 class="qaq__title"><span>Q3</span>아몬드를 활용한 다이어트 전략을 알려주세요</h2>
-                        <div class="qaq__title__content"><p><span>A</span>
+                <li class="qaq is-closed" id="q3"><h2 class="qaq__title"><span class="qa_title">Q3</span>아몬드를 활용한 다이어트 전략을 알려주세요</h2>
+                        <div class="qaq__title__content"><p><b>A</b> 아몬드는 100g당 575kcal입니다. 호두(654kcal)나 헤이즐넛(628kcal)보다 낮은 편입니다. 23알을 먹는다면 약 132kcal입니다. 아몬드는 식이섬유, 비타민 E, 리보플라빈, 나이아신 함유율이 매우 높은 영양적 효능을 인정받고 있습니다.
                             </p> 
                         </div>
                 </li>
@@ -467,8 +679,8 @@
         </section>
         <section id="section6" class="section6 section lazy bg_grey">
                  <div class="inner">
-                                     <h3>FOOD</h3>
-                    <h3>그냥 먹으면 맛있다… 함께 먹으면 더 맛있다</h3>
+                                     <h3 class="section6_title">FOOD</h3>
+                    <h3 class="section_copyright orangeline">그냥 먹으면 맛있다… 함께 먹으면 더 맛있다</h3>
                     <div class="text_box">
                         <div class="title"><h3>고소한 맛, 입에서 톡톡!</h3></div>
                         <div class="desc"><p>고소하고 입에서 톡톡 터지는 식감이 좋은 아몬드는 매력적인 요리 재료다. 그냥 먹어도 맛있고, 다른 요리<br> 
@@ -522,12 +734,12 @@
     </div>
 </div>
 <div id="section6_bridge">
-    <div class="inner">
+    <div class="inner chefs">
     <span id="icon_cheftalk"></span>
     <h3>chef's TALK</h3>
         <p>아몬드는 견과류 가운데 제가 가장 즐겨 사용하는 매력적인 재료입니다.<br>
         정말 다양한 요리를 만들 수 있죠. 고소한 맛에 식감도 좋아, 아몬드를 활용하면<br>
-        더 멋진 요리를 만들 수 있어요<i>_셰프 이진호</i>
+        더 멋진 요리를 만들 수 있어요<q>_셰프 이진호</q>
         </p>
     </div>
 </div>
@@ -535,14 +747,13 @@
 <div class="inner">
     <div class="foodInfo">
         <div class="foodDesc">
-            <h3>chef's recipe</h3>
-            <h2>아몬드를 곁들인 브로콜리 닭가슴살 볶음</h2>  
-            <span class="line"></span>
-            <h4>재료</h4>
+            <h3 class="pointtip">chef's recipe</h3>
+            <h2 class="foodTitle">아몬드를 곁들인 브로콜리 닭가슴살 볶음</h2>  
+            <h4 class="pointtip">재료</h4>
             <p>닭가슴살 1개,  삶은 고구마 1개,  다진 아몬드 1큰술, 삶은 브로콜리 1/2개,<br>
 굴소스 2큰술, 다진 마늘 1/2큰술, 실파, 올리브유, 후추
 </p>
-<h4>조리법</h4>
+<h4 class="pointtip">조리법</h4>
 <p>1  삶은 브로콜리를 먹기 좋은 크기로 썬다 <br>
 2  삶은 닭가슴살과 고구마를 한 입 크기로 썬다. <br>
 3  팬에 올리브유를 두르고 닭가슴살과 고구마, 다진마늘을 넣고 볶는다 <br>
@@ -552,10 +763,18 @@
         </div>
         <div class="foodVideo">
                 <div class="video_section">
-            <div class="video_wrap">
-                <video class="video_section" poster="./img/section5_video_thumbnail.jpg" controls>
+            <div class="video_wrap chef_video">
+                <video class="video_section" poster="./img/chef_video_thumbnail.jpg">
                     <source src="./video/6_4_chef_recipe_video.mp4" type="video/mp4">
                 </video>
+                <a class="video-play-button" id="playBtn" href="#">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+    <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
+    <circle class="video-play-circle" fill="none" stroke="#DA3D25" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+    </svg>
+    <span class="video-play-outline"></span>
+</a>
             </div>
             </div>
         </div>
@@ -563,33 +782,157 @@
 
     <div class="slider">
     <div class="swiper-container foodSlider">
+           <div class="foodIndicator">
+                <div classs="healthy">건강하게</div>
+                <div classs="easy">간편하게</div>
+                <div classs="tasty">맛있게</div>
+                <div classs="unique">독특하게</div>
+            </div>  
         <div class="swiper-wrapper">
+  
             <div class="swiper-slide food0">
                 <div class="foodBox">
                               <div class="text_box">
-                <div class="title"><h3>지구 온난화와 질병으로<br>개체수 줄어 고민</h3></div>
-                <div class="desc"><p>지구 온난화와 질병으로 
-개체수 줄어 고민 벌하면 꿀이 먼저 떠오른다. 사실 꿀을 만드는 것보다 더 중요한 일을 한다. 
-벌 덕분으로 식물들이 수분을 하고 열매를 맺는다. 우리가 먹는 것 중의 3분의 1은 벌의 수분을 
-통해 만들어진 것이다. 캘리포니아 아몬드 역시 꿀벌 덕분에 만들어진다. 그러나 지구 온난화와 
-질병 등으로 개체수가 감소해 문제가 되고 있다. 캘리포니아 아몬드 협회는 꿀벌의  연구를 
-지원하는 등 벌의 감소를 막고 생태계를 지키기 위해 노력하고 있다.</p>
+                <div class="title"><h3>아몬드와 아보카도</h3></div>
+                <div class="desc"><p>오도독 씹히는 아몬드와 크림같이 부드러운 아보카도의 조화로운 맛<br>
+                <span class="pointtip">재료</span>아몬드, 아보카도<br>
+                <span class="pointtip">조리법</span>아보카도를 얇게 썬다. 통아몬드와 함께 먹는다.</p>
                     </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide food1"></div>
-            <div class="swiper-slide food2"></div>
-            <div class="swiper-slide food3"></div>
-            <div class="swiper-slide food4"></div>
-            <div class="swiper-slide food5"></div>
-            <div class="swiper-slide food6"></div>
-            <div class="swiper-slide food7"></div>
-            <div class="swiper-slide food8"></div>
-            <div class="swiper-slide food9"></div>
-            <div class="swiper-slide food10"></div>
-            <div class="swiper-slide food11"></div>
-            <div class="swiper-slide food11"></div>
+            <div class="swiper-slide food1">
+                            <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>말린 방울 토마토와 아몬드</h3></div>
+                <div class="desc"><p>비타민 B와 비타민 E가 풍부한 아몬드와 비타민 A와 비타민 C가 함유된 토마토의 만남 <br>
+                <span class="pointtip">재료</span>아몬드, 말린 토마토<br>
+                <span class="pointtip">조리법</span>말린 토마토를 절반으로 자른다. 통아몬드를 한 개씩 올려 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food2">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>블루베리 아몬드 밀크</h3></div>
+                <div class="desc"><p>대표적 항산화 식품 아몬드와 블루베리가 만드는 건강 시너지<br>
+                <span class="pointtip">재료</span>통아몬드 1컵, 물 2컵, 소금 약간, 바닐라빈 1개, 꿀1티스푼, 생블루베리 1/4컵, 레몬주스 1/2티스푼(4인분)<br>
+                <span class="pointtip">조리법</span>아몬드를 8시간 이상 물에 불려둔다. 아몬드 껍질을 벗기고 물, 바닐라빈을 넣어서 믹서기로 갈아준다. 
+망에 넣고 걸러주고, 소금으로 간을 한다. 곱게 거를수록 부드러운 아몬드 밀크가 된다. 
+아몬드 밀크에 준비된 레몬즙과 블루베리를 넣고 함께 갈아준다. 
+</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food3">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드와 강냉이 </h3></div>
+                <div class="desc"><p>고소함이 폭발, 영화 볼 때 안성맞춤, 저칼로리 스낵<br>
+                <span class="pointtip">재료</span>강냉이, 통아몬드<br>
+                <span class="pointtip">조리법</span>강냉이와 통아몬드를 적절히 섞어서 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food4">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드와 곶감</h3></div>
+                <div class="desc"><p>아몬드와 쫄깃한 곶감이 빚어내는 조화로운 식감<br>
+                <span class="pointtip">재료</span>곶감<br>
+                <span class="pointtip">조리법</span>곶감에 아몬드를 넣는다. 적당한 크기로 곶감을 썰어 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food5">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>그릭 요거트 꿀 아몬드</h3></div>
+                <div class="desc"><p>여성 취향 저격하는 간편한 건강 음료<br>
+                <span class="pointtip">재료</span>그릭요거트, 꿀, 아몬드<br>
+                <span class="pointtip">조리법</span>그릭 요거트에 적당량에 기호에 따라 아몬드와 꿀을 넣어 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food6">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드와 단호박</h3></div>
+                <div class="desc"><p>달콤한 단호박의 맛과 아몬드가 만들어내는 맛의 시너지 효과<br>
+                <span class="pointtip">재료</span>단호박찜, 단호박 스프, 아몬드 <br>
+                <span class="pointtip">조리법</span>단호박찜, 단호박 스프에 아몬드를 넣어 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food7">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드를 곁들인 새우구이 애호박 국수</h3></div>
+                <div class="desc"><p>애호박 국수의 풍미를 더하는 아몬드의 맛과 식감<br>
+                <span class="pointtip">재료</span>레몬 바질 드레싱, 애호박, 애호박 국수, 새우, 방울토마토, 아몬드<br>
+                <span class="pointtip">조리법</span>레몬즙, 올리브오일, 식초, 후추, 마늘, 바질, 슬라이스 아몬드를 더해 드레싱을 만든다. 
+새우와 스파게티 모양으로 가늘게 썬 애호박을 볶아 먹는다. 이때 소금, 후추, 레몬 바질 드레싱으로 풍미를 더한다. 
+</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food8">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드 애플 치즈 카나페</h3></div>
+                <div class="desc"><p>과일, 치즈, 견과류가 조화를 이룬 간편한 핑거 푸드<br>
+                <span class="pointtip">재료</span>사과, 브리치즈, 아몬드<br>
+                <span class="pointtip">조리법</span>사과와 브리치즈를 삼각형 모양으로 적당히 자른다. 
+사과를 가장 아래에 깔고 그 위에 브리치즈와 아몬드를 얹어서 먹는다. 
+</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food9">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드 아이스바</h3></div>
+                <div class="desc"><p>뜻밖의 만남. 고소하면서도 시원한 맛 조화<br>
+                <span class="pointtip">재료</span>아몬드 밀크, 아몬드 버터, 메이플 시럽<br>
+                <span class="pointtip">조리법</span>재료를 적절히 섞는다. 취향에 따라 당도를 조절한다. 
+바나나, 딸기, 블루베리 등을 섞어 다양한 맛의 아몬드 아이스바를 만든다.
+</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food10">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>말린 방울 토마토와 아몬드</h3></div>
+                <div class="desc"><p>비타민 B와 비타민 E가 풍부한 아몬드와 비타민 A와 비타민 C가 함유된 토마토의 만남 <br>
+                <span class="pointtip">재료</span>아몬드, 말린 토마토<br>
+                <span class="pointtip">조리법</span>말린 토마토를 절반으로 자른다. 통아몬드를 한 개씩 올려 먹는다.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food11">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드와 호빵 & 호떡 </h3></div>
+                <div class="desc"><p>달콤한 호빵 호떡을 씹을 때 함께 느껴지는 아몬드의 산뜻한 식감<br>
+                <span class="pointtip">재료</span>호떡, 호빵, 아몬드<br>
+                <span class="pointtip">조리법</span>호떡, 호빵과 아몬드를 함께 먹는다. 아몬드를 잘게 썰어 호떡 위에 올려 먹어도 별미</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="swiper-slide food11">                          <div class="foodBox">
+                              <div class="text_box">
+                <div class="title"><h3>아몬드 파라펠</h3></div>
+                <div class="desc"><p>아몬드와 양파, 향신료를 공 모양으로 만들어 기름에 튀긴 고소한 별미<br>
+                <span class="pointtip">재료</span>아몬드, 앙파, 마늘, 파슬리, 붉은 고추, 고수, 커민, 베이킹파우더, 물, 밀가루, 소금, 요구르트, 올리브 오일, 계란 흰자 <br>
+                <span class="pointtip">조리법</span>아몬드 250g, 양파 80g에 각종 향산료와 소금을 더해 믹서에 간다. 공모양으로 기름에 튀겨낸다. 
+야구르트, 저민 마늘, 저민 민트, 소금, 껍질을 벗겨낸 오이 등으로 맛을 낸 드레싱에 얹어서 낸다.
+</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
         </div>
     </div>
                 <div class="food-pagination swiper-pagination"></div>
@@ -613,8 +956,8 @@
         <section id="section8" class="section8 section lazy">
             <div class="bg_yellow">
                 <div class="inner">
-                     <h3>BEE</h3>
-            <h3>그냥 먹으면 맛있다… 함께 먹으면 더 맛있다</h3>
+                     <h3 class="section8_title">BEE</h3>
+            <h3 class="section_copyright greyline">그냥 먹으면 맛있다… 함께 먹으면 더 맛있다</h3>
              <div class="text_box">
                 <div class="title"><h3>지구 온난화와 질병으로<br>개체수 줄어 고민</h3></div>
                 <div class="desc"><p>지구 온난화와 질병으로 
@@ -629,18 +972,22 @@
                          <ul>
                             <li class="item">
                                     <span class="beeEffect1"></span>
+                                    <span><img src="./img/s8_s1.png"></span>
                                     <i class="line"></i>
                                     <p>인간이 섭취하는 영양분의<br/>약 3분의 1은 꿀벌의 도움으로 만든<br/>음식물로 채워진다.</p>
                              </li>
                         <li class="item">
                         <span class="beeEffect2"></span>
+                         <span><img src="./img/s8_s2.png"></span>
                                     <i class="line"></i>
                                     <p>전체 농작물 중<br>80%가 꿀벌에<br>의존한다.</p></li>
                         <li class="item">
                         <span class="beeEffect3"></span>
+                         <span><img src="./img/s8_s3.png"></span>
                                     <i class="line"></i><p>꿀벌이 만드는<br>총체적<br>경제 가치</p></li>
                         <li class="item">
                         <span class="beeEffect4"></span>
+                          <span><img src="./img/s8_s4.png"></span>
                                     <i class="line"></i><p>캘리포니아아몬드협회가<br>매년 꿀벌과 생태계의 안정을 위해<br>투자하는 비용</p></li>
                     </ul>
                 </div>
@@ -821,7 +1168,7 @@
             <div class="img_box">
                 <img data-original="/innovation/CA/img/logo_bottom_ca.png" alt="" class="lazy" width="264" height="119">
             </div>
-                <a class="readmore" href="/innovation/CA/" onclick="try { ga('send', 'event', 'ILAB Inlink', 'click', '캘리포니아 아몬드 더 알아보기'); } catch (e) { }">캘리포니아 아몬드 더 알아보기</a>
+                <a class="readmore" href="http://www.almonds.or.kr" onclick="try { ga('send', 'event', 'ILAB Inlink', 'click', '캘리포니아 아몬드 더 알아보기'); } catch (e) { }">캘리포니아 아몬드 더 알아보기</a>
             <div class="txt_box">
                 <p>
                     캘리포니아아몬드협회는 미국농림부(USDA)의 관리를 받는 비영리 기관이다. 재배 농가가 아몬드 수확량에 따라 회비를 내서 운영한다.<br>
