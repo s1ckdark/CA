@@ -1,36 +1,50 @@
 $(function() {
-/* ######################################################################## */
+
     //공유 설정
     var snsMore = $("#snsMore");
-    $(".forehead .btn-sns-more").on("click",function() {
-        snsMore.toggleClass('open');
+    $(".sns-share-box .sns-more").on("click", function() {
+        snsMore.toggleClass("open");
         return false;
     });
-    $("#snsMore .close-modal").on("click",function() {
-        snsMore.removeClass('open');
-        popupWechat.removeClass("open");
+
+    // IE 감지
+    function detectIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        if (msie > 0) {
+            // IE 10 or older => return version number
+            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+        var trident = ua.indexOf('Trident/');
+        if (trident > 0) {
+            // IE 11 => return version number
+            var rv = ua.indexOf('rv:');
+            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+        var edge = ua.indexOf('Edge/');
+        if (edge > 0) {
+            // Edge (IE 12+) => return version number
+            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+        // other browser
         return false;
-    });
-    
-    var shareUrl = $("meta[property='og:url']").attr("content");
-    var popupWechat = $("#popup_wechat");
-    $("#snsMore .sns-wc").on("click", function() {
-        popupWechat.addClass("open");
-        var getWidth =  $("#qrcode").width();
-        $("#qrcode").empty().qrcode({width:getWidth,height:getWidth,text:shareUrl});
-        return false;
-    });
-/* ######################################################################## */
+    }
+
+    if ( detectIE() ){
+        $('body').addClass('ie ie'+detectIE());
+    }
 
     // Lazyload Default 
     $('.lazy').lazyload({
         effect : 'fadeIn'
     });
-
+    
+    // Defalut
     var scrollTop, roofHeight, winHeight;
     var roofHeight = $('#roof').outerHeight();
     var winHeight = $(window).height();
-
+    var controller = new ScrollMagic.Controller();
+    
     function dateCheck() {
         Date.prototype.yyyymmdd = function() {
           var yyyy = this.getFullYear().toString();
@@ -44,7 +58,7 @@ $(function() {
         var date = new Date();
         var currentDate = date.yyyymmdd();
 
-        // 날짜 체크
+        // 날짜체크
         // if( currentDate >= 20170227 ) {
         //     $('#part').show();
         // } else {
@@ -54,9 +68,10 @@ $(function() {
     dateCheck();
 
 
-});
-
-
+    /*
+        스크립트 시작
+    */
+    
     /* 인트로 (hero) 섹션 */
     function heroResize() {
         $('#hero').height(winHeight - roofHeight);
@@ -86,6 +101,39 @@ $(function() {
                 TweenLite.delayedCall(stayTime, nextSlide);                             //wait a couple of seconds before next slide
         }
     }
+
+
+     $('.video_wrap.autoplay').each(function(){
+
+        var $this = $(this)
+        var $controls = $this.find('.video_controls')
+
+        var scene = new ScrollMagic.Scene({
+            triggerElement: this,
+            duration: $this.outerHeight()
+        })
+            .addTo(controller)
+            .on("enter leave", function (e) {
+                if ( e.type == 'enter') {
+
+                    // console.log( $this )
+                    if( $this.find('.video_controls').hasClass('paused') ) {
+                        $this.find('.video_controls').toggleClass('paused playing');
+                        $this.find('video')[0].play();
+                    }
+                } else {
+                    if( $this.find('.video_controls').hasClass('playing') ) {
+                        $this.find('.video_controls').toggleClass('paused playing');
+                        $this.find('video')[0].pause();
+                    }
+                }
+                // console.log( e.type == "enter" ? "inside" : "outside" )
+            })
+    });
+
+
+
+
     var section7_controller = new ScrollMagic.Controller();
     /* section7_video */
       $('#section7_video').fnSetVideo({
@@ -98,19 +146,6 @@ $(function() {
         'volume':1 
     });
 
-    var section7VideoTween = TweenMax.from('#section7_video', .8, { opacity:0, y:'+=80', scale: .9, onComplete: videoAutoplay });
-    var section7VideoScene = new ScrollMagic.Scene({
-            triggerElement: "#section7_video",
-            triggerHook: 0.6,
-        })
-        .setTween(section7VideoTween)
-        .addTo(section7_controller);
-
-    function videoAutoplay() {
-        var video = $('#s7_video');
-       // video.play();
-    }
-
     function sec1_sw_swiper(){
     var swiper = new Swiper('.sw-swiper', {
     // Disable preloading of all images
@@ -122,6 +157,10 @@ $(function() {
     // Navigation arrows
     nextButton: '.ca-swiper-next',
     prevButton: '.ca-swiper-prev',
+    loop:true,
+autoplay: 3000,
+grabCursor: true,
+paginationClickable: true
 
 }) }  
     function sec1_interview_swiper_thumb(){
@@ -129,18 +168,23 @@ $(function() {
         nextButton: '.ca-swiper-next',
         prevButton: '.ca-swiper-prev',
         spaceBetween: 10,
+        loop:true,
+        autoplay: 3000,
+        grabCursor: true,
+        paginationClickable: true,
+        keyboardControl: true,
+        autoplayDisableOnInteraction:false,
+        speed:1000,
+        pagination: '.ca-swiper-pagination-thumb',
+        paginationClickable: true,
+        paginationBulletRender: function (swiper, index, className) {
+            return '<div class="' + className + '"><img src="./img/Cosmopolitan_almonds_0' + (index + 1) + '_thumb.jpg"></div>';
+        }
     });
-    var interviewThumbs = new Swiper('.interview-thumbs', {
-        spaceBetween: 10,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        touchRatio: 0.2,
-        slideToClickedSlide: true
-    });
-    interviewTop.params.control = interviewThumbs;
-    interviewThumbs.params.control = interviewTop;
+
 }
 function sec6_FoodSlider(){
+    TweenMax.to('#easy', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
     var foodSlider = new Swiper('.foodSlider',{
     // Disable preloading of all images
     preloadImages: false,
@@ -152,49 +196,52 @@ function sec6_FoodSlider(){
     nextButton: '.ca-swiper-next',
     prevButton: '.ca-swiper-prev',
     spaceBetween: 10,
-    loop:true
-
+    loop:true,
+    autoplay: 3000,
+    grabCursor: true,
+    paginationClickable: true,
+    onSlideChangeStart: function(swiper){
+      var $sai = swiper.realIndex;
+       if($sai == '0' || $sai == '1' || $sai == '2'){
+        TweenMax.to('#easy', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
+    } else if($sai == '3' || $sai == '4' || $sai == '5'){
+          TweenMax.to('#easy', 1, {backgroundColor:'#782e28',ease:Power3.easeOut});
+          TweenMax.to('#tasty', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
+    } else if($sai == '6' || $sai == '7' || $sai == '8'){
+          TweenMax.to('#tasty', 1, {backgroundColor:'#782e28',ease:Power3.easeOut});
+          TweenMax.to('#healthy', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
+    } else if($sai == '9' || $sai == '10' || $sai == '11'){
+          TweenMax.to('#healthy', 1, {backgroundColor:'#782e28',ease:Power3.easeOut});
+          TweenMax.to('#unique', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
+    }
+}
     });
+    $('#easy').click(function(){ foodSlider.slideTo(0, 1000, false)});
+    $('#tasty').click(function(){ foodSlider.slideTo(3, 1000, false)});
+    $('#healthy').click(function(){ foodSlider.slideTo(6, 1000, false)});
+    $('#unique').click(function(){ foodSlider.slideTo(9, 1000, false)});
+
+    $('.foodSlider').on('mouseover',function() { 
+        foodSlider.stopAutoplay();
+        var $foodbox = $('.swiper-slide-active > .foodBox');
+        TweenMax.to($foodbox, 1, {opacity:1,visibility:'visible'});}); 
+    $('.swiper-container').on('mouseout',function() { 
+        foodSlider.startAutoplay(); 
+        var $foodbox = $('.swiper-slide-active > .foodBox');
+        TweenMax.to($foodbox, 1, {opacity:0,visibility:'hidden'});})
 
 }
 function drawIcon($path, $dur, $start){
     TweenMax.staggerFrom($path, $dur, {drawSVG:0}, $start);
 }
 TweenMax.set('.mapAnimation div', {opacity:0, visibility:'hidden'});
-function sec1_MapAnime(){
-    var map = new TimelineMax();
+// function sec1_MapAnime(){
 
-    map.to('#mapFrame1', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame2', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame3', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame4', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame5', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame6', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame7', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame8', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame9', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame10', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame11', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame12', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame13', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame14', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame15', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame16', 0.5, {visibility:'visible', opacity:1});
-    map.to('#mapFrame17', 0.5, {visibility:'visible', opacity:1,top:220});
-}
+// }
 
-function sec4_AnimeTin(){
-    TweenMax.set('.animeTin', {opacity:0, visibility:'hidden'});
-    var tl = new TimelineMax();
-    tl.to('#animeTin1', 0.5, {visibility:'visible', opacity:1});
-    tl.to('#animeTin2', 0.5, {visibility:'visible', opacity:1});
-    tl.to('#animeTin3', 0.5, {visibility:'visible', opacity:1});
-    tl.to('#animeTin4', 0.5, {visibility:'visible', opacity:1});
-    tl.to('#animeTin5', 0.5, {visibility:'visible', opacity:1});
-    tl.set('.animeTin', {opacity:0})   
-    tl.to('#animeTin6', 0.5, {visibility:'visible', opacity:1});
-    tl.to('#innerBox', 0.5, {visibility:'visible', opacity:1});
- }
+
+
+
 
  function sec4_qa(){
     event.preventDefault();
@@ -250,14 +297,6 @@ function onUpdate(tween) {
   target.rotationZ = 'rotateZ('+(target.rotationZ)+'deg)';
 }
 }
-// var section1MapAnime_controller = new ScrollMagic.Controller();
-// var section1MapAnime = TweenMax.from('#map', .1, {opacity:0});
-// var section1MapAnimeStart = new ScrollMagic.Scene({
-//             triggerElement: "#map",
-//             triggerHook: 0.6,
-//         })
-// .setTween(section1MapAnime)
-// .addTo(section1MapAnime_controller);
 
 function initPlayers(num) {
   for (var i = 0; i < num; i++) {
@@ -308,43 +347,146 @@ function initPlayers(num) {
   }
 }
 
-function accordainSlider(){
-     var tl = new TimelineMax({});
-    tl.set(".slideAccordian__item", {opacity:0,left:0})
-    .fromTo('.accordian1', 1, {left:0}, {left:0, opacity:1},0)
-    .fromTo('.accordian2', 1, {left:0}, {left:'25%', opacity:1},1)
-    .fromTo('.accordian3', 1, {left:0}, {left:'50%', opacity:1},2)
-    .fromTo('.accordian4', 1, {left:0}, {left:'75%', opacity:1},3)
+    TweenMax.set('.animeTin', {opacity:0, visibility:'hidden'});
+    var animeTinTween = new TimelineMax()
+     .fromTo('#animeTin1', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#animeTin2', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#animeTin3', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#animeTin4', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#animeTin5', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#animeTin6', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
+     .fromTo('#innerBox', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1});
+      var tinScene = new ScrollMagic.Scene({
+            triggerElement: '.animeTin',
+            triggerHook: 0.6 })
+        .setTween(animeTinTween)
+        .addTo(controller); 
 
-}
-var section8IconDrawer_controller = new ScrollMagic.Controller();
-var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
-    var section8IconDrawerStart = new ScrollMagic.Scene({
-            triggerElement: "#hive",
-            triggerHook: 0.6,
-        })
-        .setTween(section8IconDrawer)
-        .addTo(section8IconDrawer_controller);
+    var maptween = new TimelineMax()
+       .to('#mapFrame1', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame2', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame3', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame4', .5, {visibility:'visible', opacity:1})
+       .to('#mapFrame5', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame6', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame7', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame8', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame9', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame10', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame11', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame12', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame13', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame14', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame15', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame16', .3, {visibility:'visible', opacity:1})
+       .to('#mapFrame17', .3, {visibility:'visible', opacity:1,top:255});
+        var mapScene = new ScrollMagic.Scene({
+            triggerElement: '#map',
+            triggerHook: 0.6 })
+        .setTween(maptween)
+        .addTo(controller); 
 
-function scrollmagic($ele) {
-    controller = new ScrollMagic();
+
+    var accordiantween = new TimelineMax()
+    .fromTo('.accordian1', .2, {left:0}, {left:0, opacity:1},0)
+    .fromTo('.accordian2', .2, {left:0}, {left:'25%', opacity:1},.2)
+    .fromTo('.accordian3', .2, {left:0}, {left:'50%', opacity:1},.4)
+    .fromTo('.accordian4', .2, {left:0}, {left:'75%', opacity:1},.6);
+        var accordianScene = new ScrollMagic.Scene({
+            triggerElement: '.slideAccordian',
+            triggerHook: 0.6 })
+        .setTween(accordiantween)
+        .addTo(controller); 
+
+
+
+    TweenMax.set('.bee_desc_item .item', {opacity:0.2});
+   
+    var beedescTween = new TimelineMax()
+    .to('.bee_item1', 1, {opacity:1, visibility:'visible'}, 1)
+    .to('.bee_item2', 1, {opacity:1, visibility:'visible'}, 2)
+    .to('.bee_item3', 1, {opacity:1, visibility:'visible'}, 3)
+    .to('.bee_item4', 1, {opacity:1, visibility:'visible'}, 4)
+    .to('.item i.line', 1, {"height": "3px", opacity:1, visibility:'visible'}, .5)
+    .to('.item i.underArrow', 1, {opacity:1, visibility:'visible'}, 1)
+    .to('.item p', 1, {opacity:1, visibility:'visible'}, 1)
+     var beeDescScene = new ScrollMagic.Scene({
+            triggerElement: '.bee_desc_item',
+            triggerHook: 0.6 })
+        .setTween(beedescTween)
+        .addTo(controller); 
     
-    $($ele).each(function (index, elem) {
-        console.log($(this));
-        var tween = TweenMax.to(elem, 0.5,
-                               {scale: 1.02, backgroundColor: 'rgb(255, 39, 46)' }
-                    );
-       new ScrollMagic.Scene({
-                duration: 200,
-                triggerElement: elem,
-                triggerHook: "onCenter",
-            })
-            .setTween(tween)
-            .addTo(controller)
-            .addIndicators();
-    });
-}
-scrollmagic('#section7');
+    TweenMax.set('.shapeFeat', {opacity:0});
+    var shapeTween = new TimelineMax()
+    .to('.shape-1', 1, {opacity:1, visibility:'visible'}, 1)
+    .to('.shape-2', 1, {opacity:1, visibility:'visible'}, 2)
+    .to('.shape-3', 1, {opacity:1, visibility:'visible'}, 3)
+    .to('.shape-4', 1, {opacity:1, visibility:'visible'}, 4)
+    .to('.shape-5', 1, {opacity:1, visibility:'visible'}, 5)
+    .to('.shape-1 i', 1, {"height": "3px", opacity:1, visibility:'visible'}, 1.2)
+    .to('.shape-1 p', 1, {"height": "3px", opacity:1, visibility:'visible'}, 1.2)
+     .to('.shape-2 i', 1, {"height": "3px", opacity:1, visibility:'visible'}, 2.2)
+    .to('.shape-2 p', 1, {"height": "3px", opacity:1, visibility:'visible'}, 2.2)
+      .to('.shape-3 i', 1, {"height": "3px", opacity:1, visibility:'visible'}, 3.2)
+    .to('.shape-3 p', 1, {"height": "3px", opacity:1, visibility:'visible'}, 3.2)
+      .to('.shape-4 i', 1, {"height": "3px", opacity:1, visibility:'visible'}, 4.2)
+    .to('.shape-4 p', 1, {"height": "3px", opacity:1, visibility:'visible'}, 4.2)
+      .to('.shape-5 i', 1, {"height": "3px", opacity:1, visibility:'visible'}, 5.2)
+    .to('.shape-5 p', 1, {"height": "3px", opacity:1, visibility:'visible'}, 5.2)
+     var beeDescScene = new ScrollMagic.Scene({
+            triggerElement: '.almondShape',
+            triggerHook: 0.6 })
+        .setTween(beedescTween)
+        .addTo(controller); 
+
+    TweenMax.set('#beeIcon', {opacity:0,visibility:'hidden'});
+    TweenMax.set('#iconFruit', {opacity:0,visibility:'hidden'});
+    TweenMax.set('.endangeredSpecies q', {opacity:0,visibility:'hidden'});
+    var iconDrawer = new TimelineMax()
+    .staggerFrom('#hive path', 2, {drawSVG:0}, .1)
+    .to('#beeIcon',0.5, {opacity:1,visibility:'visible'},1.5)
+    .to('#iconFruit', 1, {opacity:1,visibility:'visible'},1.8)
+    .to('.endangeredSpecies q', 1, {opacity:1,visibility:'visible'},4);
+    
+    var iconDrawerTween = new ScrollMagic.Scene({
+            triggerElement: "#hive",
+            triggerHook: .6,
+        })
+        .setTween(iconDrawer)
+         .addTo(controller);
+
+
+   
+
+    // var section8IconDrawerScene = new ScrollMagic.Scene({
+    //         triggerElement: "#hive",
+    //         triggerHook: 0.6,
+    //     })
+    //     .setTween(section8IconDrawer)
+    //     .addTo(controller);
+// }
+
+// function scrollmagic($ele) {
+//     controller = new ScrollMagic();
+    
+//     $($ele).each(function (index, elem) {
+//         console.log($(this));
+//         var tween = TweenMax.to(elem, 0.5,
+//                                {scale: 1.02, backgroundColor: 'rgb(255, 39, 46)' }
+//                     );
+//        new ScrollMagic.Scene({
+//                 duration: 200,
+//                 triggerElement: elem,
+//                 triggerHook: "onCenter",
+//             })
+//             .setTween(tween)
+//             .addTo(controller)
+//             .addIndicators();
+//     });
+// }
+// scrollmagic('#section7');
+
+
 function pinNav(){
     // init ScrollMagic Controller
 var controller = new ScrollMagic.Controller();
@@ -360,72 +502,159 @@ var scene1 = new ScrollMagic.Scene({
 .addTo(controller);
 }
 
-function hoverArrow2(){
-var button = $('.bee_desc_item .item');
-var tl = new TimelineMax({paused: true});
+// function hoverArrow2(){
+// var button = $('.bee_desc_item .item');
+// var tl = new TimelineMax();
 
-button.on({mouseenter:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
-tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
-tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
- tl.play();
-},
-mouseleave:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
-tl.to(line, 0.3, {"height": "1px"}, .1);
-tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// button.on({mouseenter:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+// tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+// tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+// },
+// mouseleave:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+// tl.to(line, 0.3, {"height": "1px"}, .1);
+// tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// },
+// mouseover:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+// tl.to(line, 0.3, {"height": "1px"}, .1);
+// tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// }, mouseout:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+// tl.to(line, 0.3, {"height": "1px"}, .1);
+// tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// }})}
 
-}, mouseout:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
-tl.to(line, 0.3, {"height": "1px"}, .1);
-tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
-}})}
+// function hoverArrow1(){
+// var button = $('.shapeFeat');
+// var hover = new TimelineMax();
+// button.on({mouseenter:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
+// hover.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+// hover.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+// hover.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
+// },mouseleave:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
+// hover.to(line, 0.3, {"height": "1px"}, .1);
+// hover.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// hover.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// }, mouseout:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
+// hover.to(line, 0.3, {"height": "1px"}, .1);
+// hover.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// hover.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
+// }, mouseover:function(){
+// var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
+// hover.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+// hover.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+// hover.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
+// }})}
 
-function hoverArrow1(){
-var button = $('.shapeFeat');
-var tl = new TimelineMax({paused: true});
+// Init controller
+var ncontroller = new ScrollMagic.Controller({
+  globalSceneOptions: {
+    duration: $('section').height(),
+    triggerHook: .025,
+    reverse: true
+  }
+});
 
-button.on({mouseenter:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
-tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
-tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
-tl.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
-  tl.play();
-},mouseleave:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
-tl.to(line, 0.3, {"height": "1px"}, .1);
-tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
-tl.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
-}, mouseout:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
-tl.to(line, 0.3, {"height": "1px"}, .1);
-tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
-tl.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
-}, mouseover:function(){
-var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
-tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
-tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
-tl.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
-  tl.play();
-},})}
+
+// /*
+// object to hold href values of links inside our nav with
+// the class '.anchor-nav'
+
+scene_object = {
+  '[scene-name]' : {
+    '[target-scene-id]' : '[anchor-href-value]'
+  }
+}
+
+var scenes = {
+  'scene1': {
+    'section2': 'sec1'
+  },
+  'scene2': {
+    'section4': 'sec2'
+  },
+  'scene3': {
+    'section6': 'sec3'
+  },
+  'scene4': {
+    'section8': 'sec4'
+  }
+}
+
+for(var key in scenes) {
+  // skip loop if the property is from prototype
+  if (!scenes.hasOwnProperty(key)) continue;
+
+  var obj = scenes[key];
+
+  for (var prop in obj) {
+    // skip loop if the property is from prototype
+    if(!obj.hasOwnProperty(prop)) continue;
+
+    new ScrollMagic.Scene({ triggerElement: '#' + prop })
+        .setClassToggle('#' + obj[prop], 'active')
+        .addTo(ncontroller);
+  }
+}
+
+
+// Change behaviour of controller
+// to animate scroll instead of jump
+controller.scrollTo(function(target) {
+
+  TweenMax.to(window, 0.5, {
+    scrollTo : {
+      y : target,
+      autoKill : true // Allow scroll position to change outside itself
+    },
+    ease : Cubic.easeInOut
+  });
+
+});
+
+// Bind scroll to anchor links using jQuery
+
+$(document).on("click", "a[href^=#]", function(e) {
+  var id = $(this).attr("href");
+  console.log(id);
+  if($(id).length > 0) {
+    e.preventDefault();
+
+    // trigger scroll
+     ncontroller.scrollTo(id);
+
+    // If supported by the browser we can also update the URL
+    if (window.history && window.history.pushState) {
+      history.pushState("", document.title, id);
+    }
+  }
+
+});
+
+
+
 
 function init(){
     heroResize();
     heroSlideShow(); 
     sec1_sw_swiper();
     sec1_interview_swiper_thumb();
-    sec1_MapAnime();
-    sec4_AnimeTin();
+    // sec1_MapAnime();
+    //sec4_AnimeTin();
     sec6_FoodSlider();
     sec4_qa();
-    accordainSlider();
+    // accordianSlider();
     // sec2_almondsdrop();\
-    drawIcon('.specItem path', .1, .1);
-    drawIcon('#hive path', .5, .1);
+    // drawIcon('.specItem path', .1, .1);
+    // drawIcon('#hive path', .5, .1);
     pinNav();
-    initPlayers(1);
-    hoverArrow1();
-    hoverArrow2();
+    initPlayers();
+   
 }
 
 init();

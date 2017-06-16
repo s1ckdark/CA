@@ -10,10 +10,10 @@
 @orange-color:#dc4600;
 @grey-color: #323232;
 @default-color:#323232;
-@img-url : '/innovation/CA/img';
-@img-url : '/innovation/CA/img';
-@mobile-img-url : '/innovation/CA/mobile/img';
-@mobile-video-url : '/innovation/CA/mobile/video';
+@img-url : '/innovation/almond/img';
+@img-url : '/innovation/almond/img';
+@mobile-img-url : '/innovation/almond/mobile/img';
+@mobile-video-url : '/innovation/almond/mobile/video';
 @mobile-small:  ~"only screen and (max-width: 340px)";
 @mobile-medium: ~"only screen and (max-width: 480px)";
 @mobile:        ~"only screen and (max-width: 768px)";
@@ -36,8 +36,22 @@
     background-image: url('@{img-url}/sprite.png');
     background-position:@position;
     background-repeat:no-repeat;
-    background-size: 200px;
+    background-size: 400px;
 }
+.swiper-slide {    /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
 // Default
 body {
     margin: auto;
@@ -65,7 +79,6 @@ p {
     font-size: 15px;
     line-height: 1.6;
 }
-
 // 상단
 .head_wrap {
     background:@yellow-color;
@@ -204,25 +217,27 @@ nav {
     bottom:0px;
     width:100%;
     z-index:99;
-    &.fixed {top:78px !important;}
+    &.fixed {top:50px !important;}
     &:after {
         clear:both;
         content:'';
         display:none;
     }
     a {
-        width:25%;
+        width:49.5%;
         height:20px;
         padding:10px 0 15px;
+        margin-bottom:1px;
         background-color:rgba(0,0,0,0.7);
         display:inline-block;
         float:left;
         text-align:center;
         color:#fff;
         vertical-align: middle;
+
         span {display:inline-block;width:30px;height:22px;position:relative;}
         .nav_left_icon {top:3px;left:-5px;}
-            #vitamin {.sp-img(0px -0px);}
+    #vitamin {.sp-img(0px -0px);}
     #diet {.sp-img(0px -22px);}
     #food {.sp-img(0px -43px);}
     #bee {.sp-img(0px -64px);}
@@ -231,6 +246,7 @@ nav {
     #food_arrow {.sp-img(-30px -43px);top:5px;right:-5px;}
     #bee_arrow {.sp-img(-30px -64px);top:5px;right:-5px;}
     } 
+    a:nth-child(2n) {margin-left:1%;}
     
 
 }
@@ -239,8 +255,8 @@ nav {
 #foot {
     background:@yellow-color;
     text-align:center;
-    a.readmore {display:inline-block;padding:15px;color:@red-color;border:1px solid @red-color;margin:50px 0;height:20px;line-height:20px;}
-    p {color:@red-color;}
+    a.readmore {display:inline-block;padding:15px;color:@red-color;border:1px solid @red-color;margin:50px 0;height:20px;line-height:20px;cursor:grab;}
+    p {color:@red-color;letter-spacing:-1px;font-size:14px;}
     .copyright {
         padding: 70px 0;
         background: #fff;
@@ -249,7 +265,7 @@ nav {
         font-weight: 200;
         color: #818181;
         p {
-            letter-spacing: 0px;
+            letter-spacing: -1px;
         }
     }
 }
@@ -323,16 +339,13 @@ nav {
             .clearfix();
         }
         .title {
-           float:left;
-           width:30%;
-           text-align:left;
-       } 
+        
+           width:100%;
+         } 
 
        .desc {
-        float:right;
-        width:70%;
-        text-align:left;
-    }
+width:100%;
+         }
             .almondsSpec {.clearfix();position:relative;margin-top:50px;
             .col-3.title { float:left;width:25%;text-align:left; } 
            .col-3.desc {float:left;width:25%;
@@ -357,9 +370,9 @@ nav {
                 .spec7 {top:250px;left:328px;}
                 .spec8 {top:280px;left:320px;}
                 .spec9 {top:310px;left:305px;}
-                .spec10 {top:345px;left:304px;}
+                .spec10 {top:345px;left:308px;}
                 .spec11 {top:380px;left:300px;}
-                .spec12 {top:416px;left:300px;}
+                .spec12 {top:416px;left:296px;}
                 .specNumber {color:#969696;}
             }
        }
@@ -379,7 +392,7 @@ nav {
     .clearfix();
         &.bg_yellow {
         background-color:@yellow-color;
-         #map {float:left;text-align:left;width:480px;margin-right:70px;position:relative;
+         #map {width:100%;position:relative;
         .mapAnimation {position:relative;}
         .mapAnime {position:absolute;display:block;width:480px;height:420px;top:0;left:0;}
         #mapFrame1 {background-image:url('@{img-url}/1_2_intro_map_ani_01.png');}
@@ -404,24 +417,38 @@ nav {
          }
           .map_desc {
            height:430px;
-           float:right;
-           width: calc(~"100% - 550px");
-            h2.section_title {text-align:left;font-size:1.8em;margin:0 0 15px;}
-              p {text-align:left;}
+           width: 100%;
+            h2.section_title {font-size:1.8em;margin:10px 0 15px;}
+              p {line-height:35px;}
      
         }
-    .swiper-slide {position:relative;display:block;background-size:cover;width:1100px;height:580px;
-        .sliderbox {position:absolute;bottom:26px;right:28px;width:310px;height:140px;display:inline-block;padding:20px;background-color:rgba(255,255,255,0.7);
+    .swiper-slide {position:relative;display:block;background-size:cover;width:100%;    /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    height:580px;
+        .sliderbox {position:absolute;bottom:26px;right:28px;width:310px;height:140px;display:inline-block;padding:20px;background-color:rgba(255,255,255,0.6);
             span {font-size:16px;}
             h2 {margin:0;}}}
     .sw0 {background-image:url('@{img-url}/section1_sw0.jpg');
-        h2 {font-size:30px;top: 50%;position:absolute;left: 50%;margin-left: -100px;;}}
+        h2 {font-size:30px;top: 50%;position:absolute;left: 50%;margin-left: -100px;color:white;}}
     .sw1 {background-image:url('@{img-url}/section1_sw1.jpg');}
     .sw2 {background-image:url('@{img-url}/section1_sw2.jpg');
-            span {color:white;}}
+            span {color:@grey-color;}}
     .sw3 {background-image:url('@{img-url}/section1_sw3.jpg');
-            span {color:white;}}
+        h2 {padding-bottom:30px;}
+            span {color:@grey-color;}}
     .sw4 {background-image:url('@{img-url}/section1_sw4.jpg');
+        h2 {color:white;}
         span {color:white;}}
 
 
@@ -451,21 +478,26 @@ nav {
         background-size: cover;
         background-position: center;
     }
-    .sw-top {
+    .interview-top {
         height: 80%;
         width: 100%;
     }
-    .sw-thumbs {
+    .ca-swiper-pagination-thumb {
         height: 20%;
         box-sizing: border-box;
         padding: 10px 0;
+        .clearfix();
     }
-    .sw-thumbs .swiper-slide {
-        width: 25%;
+    .ca-swiper-pagination-thumb div {
+        width:212px;
         height: 100%;
-        opacity: 0.4;
+        opacity: 0.4;float:left;
+        img {width:212px;}
+
     }
-    .sw-thumbs .swiper-slide-active {
+    .ca-swiper-pagination-thumb div:nth-child(2n) {margin:0 10px;}
+
+    .ca-swiper-pagination-thumb .swiper-pagination-bullet-active {
         opacity: 1;
     }
     }
@@ -560,16 +592,16 @@ nav {
                         }}
                 .accordian2 {background-color:#d7d531;color:white;z-index:9;
                      .slideAccordian__item__b {  padding: 0 10px;   
-                        i.icon_sugar {display:block;.sp-img(-50px -95px);width:140px;height:60px;;margin:0 auto;
+                        i.icon_sugar {display:block;.sp-img(-50px -95px);width:140px;height:60px; margin: 30px auto 20px;
                             }
     }}
                 .accordian3 {background-color:#bfbd10;color:white;z-index:8;
                      .slideAccordian__item__c {  padding: 0 20px;   
-                   i.icon_excersie {display:block;.sp-img(-199px -94px);width:160px;height:60px;margin:0 auto;}
+                   i.icon_excersie {display:block;.sp-img(-199px -94px);width:160px;height:60px; margin: 30px auto 20px;}
                }}
                 .accordian4 {background-color:#99982a;color:white;
                      .slideAccordian__item__d {  padding: 0 20px;   
-                   i.icon_smoke{display:block;.sp-img(-2px -155px);width:68px;height:60px;margin:0 auto;
+                   i.icon_smoke{display:block;.sp-img(-0px -155px);width:68px;height:60px;    margin: 30px auto 20px;
                             }}
 
                         }
@@ -607,7 +639,7 @@ nav {
             .clearfix();
             .shapeFeat {float:left;width:20%;margin-top:-120px;display:block;height:100%;
                 q {color:@orange-color;}
-                i.line {background-color:@orange-color;height:1px;width:80%;display:block;margin:20px auto 30px;}
+                i.line {background-color:@orange-color;height:1px;width:80%;display:block;margin:20px auto 10px;}
                 p {display:inline-block;visibility:hidden;width:100%;font-size:15px;}
                .nodis {display:none;}
                .underArrow {visibility:hidden;opacity:0;}  }
@@ -616,7 +648,7 @@ nav {
         #section6_bridge {display:block;background-color:#c5c1c0;background-image:url('@{img-url}/section6_br.png');background-repeat:repeat-x;width:100%;height:230px;
         .inner {padding:30px 0 20px;}}
         .chefs {color:@orange-color;text-transform: uppercase;
-            p {font-size:15px;
+            p {font-size:18px;
                 q {font-size:11px;font-style:none;}}}
         #icon_cheftalk {display:block;.sp-img(-65px -154px);width:40px;height:40px;display:block;margin:0 auto;}
         .foodInfo {margin-bottom:50px;.clearfix();
@@ -633,9 +665,23 @@ nav {
             div:nth-child(2) {margin:0 0.44%;}
             div:last-child {margin-left:0.44%;}
         }
-    .swiper-slide {display:block;width:1100px;height:700px;}
+    .swiper-slide {display:block;width:1100px;height:700px;
+    /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
     .swiper-slide-next, .swiper-slide-prev {opacity:0.5}
-    .foodBox {position:absolute;bottom:0px;}
+    .foodBox {position:absolute;bottom:0px;width:90%;padding:0 5%;background-color:rgba(50,0,0,0.7);}
     .food0 {background-image:url('@{img-url}/6_5_food_img_1_0.jpg');}
     .food1 {background-image:url('@{img-url}/6_5_food_img_1_1.jpg');}
     .food2 {background-image:url('@{img-url}/6_5_food_img_1_2.jpg');}
@@ -649,7 +695,9 @@ nav {
     .food10 {background-image:url('@{img-url}/6_5_food_img_4_1.jpg');}
     .food11 {background-image:url('@{img-url}/6_5_food_img_4_2.jpg');}
     .food12 {background-image:url('@{img-url}/6_5_food_img_4_3.jpg');}
-    .food-pagination {bottom:-20px;}
+    .food-pagination {bottom:-40px;}
+    .foodSlider .swiper-slide .foodBox {visibility: hidden;opacity: 0;}
+    .snsShare {.sp-img(-366px -105px);width:30px;height:30px;display:block;}
 
 }
        }  
@@ -666,16 +714,16 @@ nav {
                 ul{
                     display:flex;
                     .clearfix();
-                    li.item {float:left;width:24.67%;min-height:300px;
+                    li.item {float:left;width:24.67%;min-height:300px;display:block;
                         span {display:block;margin:0 auto;height:45px;margin-bottom:30px;}
                         span.onethird {height:70px;margin-top:-25px;}
                         p {font-size:12px;}
                         i.line {background:#000;display:block;width:60%;margin:0 auto;height:1px;}
                         i.underArrow {margin-top:-1px;opacity:0;visibility: hidden;}
-                   .beeEffect1 {display:block;.sp-img(-148px -152px);width:110px;height:140px;}
-                   .beeEffect2 {display:block;.sp-img(-256px -151px);width:140px;height:140px;}
-                   .beeEffect3 {display:block;.sp-img(2px -270px);width:120px;height:140px;}
-                   .beeEffect4 {display:block;.sp-img(-122px -284px);width:225px;height:140px;}
+                   .beeEffect1 {display:block;.sp-img(-148px -152px);width:110px;height:139px;}
+                   .beeEffect2 {display:block;.sp-img(-256px -149px);width:140px;height:139px;}
+                   .beeEffect3 {display:block;.sp-img(2px -270px);width:120px;height:139px;}
+                   .beeEffect4 {display:block;.sp-img(-122px -284px);width:225px;height:139px;}
                         }
                           li:nth-child(2) {margin:0 0.44%;}
             li:last-child {margin-left:0.44%;}}
@@ -689,9 +737,9 @@ nav {
                 .beeTitle {color:white;}
                 #beeIcon {display:block;.sp-img(-58px -202px);display:block;width:80px;height:70px;margin:0 auto;} 
                 .endangeredSpecies {margin-top:40px;color:#fac846;} 
-                #iconFruit {background-image:url('@{img-url}/icon_fruit.png');width:722px;height:72px;display:block;margin:0 auto;margin-bottom:15px;}
+                #iconFruit {background-image:url('@{img-url}/icon_fruit.png');width:722px;height:71px;display:block;margin:0 auto;margin-bottom:15px;}
                 }
-
+.video_controls {display:none;}
 .video-play-button {
   display: block;
   width: 104px;
