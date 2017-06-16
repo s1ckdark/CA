@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 @import url('https://cdn.jsdelivr.net/font-nanumlight/1.0/nanumbarungothicweb.css');
+@import url('https://cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css');
 
 @point-color: #f58214;
 @yellow-color : #fac846;
@@ -41,7 +42,7 @@ body {
     min-width: 1000px;
     margin: auto;
     font-size: 20px;
-    font-family: 'Roboto','NanumSquareGothic',sans-serif;
+    font-family: 'Roboto','NanumSquare','NanumSquareGothic',sans-serif;
     // font-family: 'NotoSansKR','맑은 고딕','Malgun Gothic','나눔고딕','NanumGothic','Noto Sans KR','Source Han Sans',sans-serif;
     font-weight: 300;
     color:@grey-color;
@@ -331,21 +332,22 @@ nav {
         width:70%;
         text-align:left;
     }
-            .almondsSpec {.clearfix();position:relative;
+            .almondsSpec {.clearfix();position:relative;margin-top:50px;
             .col-3.title { float:left;width:25%;text-align:left; } 
            .col-3.desc {float:left;width:25%;
             p {width:90%;margin-right:10%;text-align:left;}}
            .col-3.spec {float:right;width:50%;position:relative;
                 .bg_spec {background-image:url('@{img-url}/almondSpec.png');display:block;width:351px;height:466px;left:-30px;top:10px;}
                 div {position:absolute;
-                    span {position:relative;
+                    span {position:relative;color:#99982a;
                       font-size:11px;    top: -15px;
     left: 10px;
                         .innerSpec {position:absolute;top:-40px;}
                         }}
                 .spec1 {top:-87px;left:260px;
-                    span.spec_title_box {width:198px;display:block;height:158px;background-color:#bfbd10;top:-85px;left:260px;}
-                    }
+                    div.spec_title_box {width:108px;display:block;height:128px;padding:15px 45px;top:3px;left:86px;}
+                    text-align:left;color:white;letter-spacing:-1px;
+                .specTitleNum {color:#6e6e32;font-size:18px;}}
                 .spec2 {top:113px;left:305px;}
                 .spec3 {top:140px;left:312px;} 
                 .spec4 {top:170px;left:320px;}
@@ -357,6 +359,7 @@ nav {
                 .spec10 {top:345px;left:304px;}
                 .spec11 {top:380px;left:300px;}
                 .spec12 {top:416px;left:300px;}
+                .specNumber {color:#969696;}
             }
        }
     .bg_wrap {
@@ -529,36 +532,44 @@ nav {
                     &__2 {display:block;.sp-img(-350px -322px);}
                     &__3 {display:block;.sp-img(-350px -355px);}
                 }
-            .subtitle {height:20px;}
-                            .textspec {.clearfix();margin-top:30px;
+            .subtitle {height:18px;letter-spacing:-1px;margin-top:30px;margin-bottom:20px;}
+                            .textspec {.clearfix();margin-top:20px;padding:0 15px;text-align:center;
 
-                                &_left {float:left;width:40%}
-                                &_compare {float:left;width:20%;text-align:center;}
-                                &_right {float:left;width:40%}
-                                .bignum {font-size:48px;}
-                                .smallnum {font-size:26px;}
-                                .target {font-size:10px;}
+                                &_left {float:left;width:40%;}
+                                &_compare {float:left;width:20%;}
+                                &_right {float:left;width:40%;}
+                                .bignum {font-size:40px;font-weight:400;letter-spacing:-1px;line-height:26px;
+                                   
+                                     .unit {font-size:20px;} }
+                                .smallnum {font-size:30px;line-height:30px;letter-spacing:-1px;font-weight:300;
+                                         .unit {font-size:20px;}
+                                }
+                                .innerSpec {display:inline-block;margin:0 auto;}
+                                .target {font-size: 12px;font-weight:400;line-height: 12px;letter-spacing: -1px;}
                                 i.icon_arrow_prev {display:block;.sp-img(-60px -0px);width:25px;height:44px;margin:0 auto;}
                                      i.icon_arrow_next {display:block;.sp-img(-60px -44px);width:25px;height:44px;margin:0 auto;}
                                 }
                 i.line {width:80%;;margin:0 auto;height:1px;background:white;display:block;margin:10px auto 20px;}
                   .accordian1 {background-color:#ebea57;color:#a4a335; z-index:10;
-                    .slideAccordian__item__a {       
+                    .slideAccordian__item__a {  padding: 0 20px;     
                         i.icon_almonds {display:block;.sp-img(-342px -2px);width:50px;height:65px;margin:80px auto 10px auto;}
                         h2 {margin-top:10px;}
                         #corp {font-size:11px;margin-top:80px;height:15px;} 
 
                         }}
                 .accordian2 {background-color:#d7d531;color:white;z-index:9;
+                     .slideAccordian__item__b {  padding: 0 10px;   
                         i.icon_sugar {display:block;.sp-img(-50px -95px);width:140px;height:60px;;margin:0 auto;
                             }
-    }
+    }}
                 .accordian3 {background-color:#bfbd10;color:white;z-index:8;
+                     .slideAccordian__item__c {  padding: 0 20px;   
                    i.icon_excersie {display:block;.sp-img(-199px -94px);width:160px;height:60px;margin:0 auto;}
-               }
+               }}
                 .accordian4 {background-color:#99982a;color:white;
+                     .slideAccordian__item__d {  padding: 0 20px;   
                    i.icon_smoke{display:block;.sp-img(-2px -155px);width:68px;height:60px;margin:0 auto;
-                            }
+                            }}
 
                         }
                 
@@ -593,9 +604,12 @@ nav {
             .clearfix();
         .almondShape {background-color:#1c1c1c;width:100%;height:400px;display:block;
             .clearfix();
-            .shapeFeat {float:left;width:20%;margin-top:-100px;
-                p {display:none;}
-            }
+            .shapeFeat {float:left;width:20%;margin-top:-120px;display:block;height:100%;
+                q {color:@orange-color;}
+                i.line {background-color:@orange-color;height:1px;width:80%;display:block;margin:20px auto 30px;}
+                p {display:inline-block;visibility:hidden;width:100%;font-size:15px;}
+               .nodis {display:none;}
+               .underArrow {visibility:hidden;opacity:0;}  }
         }
         .pointtip {text-transform:uppercase;color:@point-color;}
         #section6_bridge {display:block;background-color:#c5c1c0;background-image:url('@{img-url}/section6_br.png');background-repeat:repeat-x;width:100%;height:230px;
@@ -634,7 +648,7 @@ nav {
     .food10 {background-image:url('@{img-url}/6_5_food_img_4_1.jpg');}
     .food11 {background-image:url('@{img-url}/6_5_food_img_4_2.jpg');}
     .food12 {background-image:url('@{img-url}/6_5_food_img_4_3.jpg');}
-
+    .food-pagination {bottom:-20px;}
 
 }
        }  
@@ -652,10 +666,11 @@ nav {
                     display:flex;
                     .clearfix();
                     li.item {float:left;width:24.67%;min-height:300px;
-                        span {display:block;margin:0 auto;}
-
+                        span {display:block;margin:0 auto;height:45px;margin-bottom:30px;}
+                        span.onethird {height:70px;margin-top:-25px;}
                         p {font-size:12px;}
-                        i.line {background:#000;display:block;width:100%;height:1px;}
+                        i.line {background:#000;display:block;width:60%;margin:0 auto;height:1px;}
+                        i.underArrow {margin-top:-1px;opacity:0;visibility: hidden;}
                    .beeEffect1 {display:block;.sp-img(-148px -152px);width:110px;height:140px;}
                    .beeEffect2 {display:block;.sp-img(-256px -151px);width:140px;height:140px;}
                    .beeEffect3 {display:block;.sp-img(2px -270px);width:120px;height:140px;}

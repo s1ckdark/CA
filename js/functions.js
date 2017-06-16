@@ -103,16 +103,15 @@ $(function() {
     }
     var section7_controller = new ScrollMagic.Controller();
     /* section7_video */
-    // $('#section7_video').attr('src','./video/section7_video_almond.mp4');
-    // $('#section7_video').fnSetVideo({
-    //     'ovpUrl': 'http://v.ovp.joins.com/kJ1dwgtc',
-    //     'posterImg': '/innovation/CA/img/section7_video_thumb.jpg',
-    //     'ovpRo': 1, // 1 = 16:9, 2 = 1:1
-    //     'ctrls': true, 
-    //     'preload': true, 
-    //     'addCls':'loaded',
-    //     'volume':1 
-    // });
+      $('#section7_video').fnSetVideo({
+        'ovpUrl': 'http://v.ovp.joins.com/0hPnlogB',
+        'posterImg': '/innovation/CA/img/section7_video_thumb.jpg',
+        'ovpRo': 1, // 1 = 16:9, 2 = 1:1
+        'ctrls': true, 
+        'preload': true, 
+        'addCls':'loaded',
+        'volume':1 
+    });
 
     var section7VideoTween = TweenMax.from('#section7_video', .8, { opacity:0, y:'+=80', scale: .9, onComplete: videoAutoplay });
     var section7VideoScene = new ScrollMagic.Scene({
@@ -123,8 +122,8 @@ $(function() {
         .addTo(section7_controller);
 
     function videoAutoplay() {
-        var video = $('#section7_video');
-      //  video.play();
+        var video = $('#s7_video');
+       // video.play();
     }
 
     function sec1_sw_swiper(){
@@ -290,6 +289,7 @@ function initPlayers(num) {
       // ----------------------------------------------------------
       if (playBtn != null) {
         playBtn.addEventListener('click', function() {
+            console.log("click");
           togglePlay()
         });
       }
@@ -302,11 +302,12 @@ function initPlayers(num) {
           $('#playBtn').removeClass('pause');
           // $('.play_state').addClass('paused').removeClass('playing');
           $('.chef_video').parent().click(function () {
-    if($(this).children(".video").get(0).paused){
-        $(this).children(".video").get(0).play();
+            console.log("click");
+    if($(this).children(".video_section").get(0).paused){
+        $(this).children(".video_section").get(0).play();
         $(this).children(".playpause").fadeOut();
     }else{
-       $(this).children(".video").get(0).pause();
+       $(this).children(".video_section").get(0).pause();
         $(this).children(".playpause").fadeIn();
     }
 });
@@ -340,10 +341,28 @@ var section8IconDrawer = TweenMax.from('#hive', .1, {opacity:0});
         .setTween(section8IconDrawer)
         .addTo(section8IconDrawer_controller);
 
-function scrollmagic($trigger, $duration, $func){
+function scrollmagic($ele) {
+    controller = new ScrollMagic();
+    
+    $($ele).each(function (index, elem) {
+        console.log($(this));
+        var tween = TweenMax.to(elem, 0.5,
+                               {scale: 1.02, backgroundColor: 'rgb(255, 39, 46)' }
+                    );
+       new ScrollMagic.Scene({
+                duration: 200,
+                triggerElement: elem,
+                triggerHook: "onCenter",
+            })
+            .setTween(tween)
+            .addTo(controller)
+            .addIndicators();
+    });
+}
+scrollmagic('#section7');
+function pinNav(){
     // init ScrollMagic Controller
 var controller = new ScrollMagic.Controller();
-
 // Scene Handler
 var scene1 = new ScrollMagic.Scene({
   triggerElement: "#nav", // point of execution
@@ -353,9 +372,58 @@ var scene1 = new ScrollMagic.Scene({
 })
 .setPin("#nav")// the element we want to pin
 .setClassToggle("#nav", "fixed")
-.addIndicators({name: "1 (duration: 78)"})
 .addTo(controller);
 }
+
+function hoverArrow2(){
+var button = $('.bee_desc_item .item');
+var tl = new TimelineMax({paused: true});
+
+button.on({mouseenter:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+ tl.play();
+},
+mouseleave:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+tl.to(line, 0.3, {"height": "1px"}, .1);
+tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+
+}, mouseout:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow');
+tl.to(line, 0.3, {"height": "1px"}, .1);
+tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+}})}
+
+function hoverArrow1(){
+var button = $('.shapeFeat');
+var tl = new TimelineMax({paused: true});
+
+button.on({mouseenter:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
+tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+tl.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
+  tl.play();
+},mouseleave:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
+tl.to(line, 0.3, {"height": "1px"}, .1);
+tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+tl.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
+}, mouseout:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');;
+tl.to(line, 0.3, {"height": "1px"}, .1);
+tl.to(arrow, 0.3, {opacity:0, visibility:'hidden'}, .1);
+tl.to(text, 0.3, {opacity:0, visibility:'hidden'}, .1);
+}, mouseover:function(){
+var line = $(this).find('.line'), arrow = $(this).find('.underArrow'), text=$(this).find('p');
+tl.to(line, 0.3, {"height": "3px", opacity:1, visibility:'visible'}, .1);
+tl.to(arrow, 0.3, {opacity:1, visibility:'visible'}, .1);
+tl.to(text, 0.3, {opacity:1, visibility:'visible'}, .1);
+  tl.play();
+},})}
+
 function init(){
     heroResize();
     heroSlideShow(); 
@@ -370,6 +438,9 @@ function init(){
     drawIcon('.specItem path', .1, .1);
     drawIcon('#hive path', .5, .1);
     pinNav();
+    initPlayers(1);
+    hoverArrow1();
+    hoverArrow2();
 }
 
 init();
