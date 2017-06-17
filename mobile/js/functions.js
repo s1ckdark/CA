@@ -175,12 +175,8 @@ paginationClickable: true
         keyboardControl: true,
         autoplayDisableOnInteraction:false,
         speed:1000,
-        pagination: '.ca-swiper-pagination-thumb',
         paginationClickable: true,
-        paginationBulletRender: function (swiper, index, className) {
-            return '<div class="' + className + '"><img src="./img/Cosmopolitan_almonds_0' + (index + 1) + '_thumb.jpg"></div>';
-        }
-    });
+     });
 
 }
 function sec6_FoodSlider(){
@@ -361,8 +357,13 @@ function initPlayers(num) {
             triggerHook: 0.6 })
         .setTween(animeTinTween)
         .addTo(controller); 
-
-    var maptween = new TimelineMax()
+    /* 480x420 */
+    
+    var $mapWidth = $(window).width(), $mapHeight = $mapWidth*21/24, $textBox = $('#mapFrame17').height();
+    var $calcText = $mapHeight - $textBox; 
+    var maptween = new TimelineMax({onStart:function(){
+        TweenMax.set('.mapAnime',{height:$mapHeight,width:$mapWidth});     
+    }})
        .to('#mapFrame1', .3, {visibility:'visible', opacity:1})
        .to('#mapFrame2', .3, {visibility:'visible', opacity:1})
        .to('#mapFrame3', .3, {visibility:'visible', opacity:1})
@@ -379,7 +380,7 @@ function initPlayers(num) {
        .to('#mapFrame14', .3, {visibility:'visible', opacity:1})
        .to('#mapFrame15', .3, {visibility:'visible', opacity:1})
        .to('#mapFrame16', .3, {visibility:'visible', opacity:1})
-       .to('#mapFrame17', .3, {visibility:'visible', opacity:1,top:255});
+       .to('#mapFrame17', .3, {visibility:'visible', opacity:1,top:$calcText});
         var mapScene = new ScrollMagic.Scene({
             triggerElement: '#map',
             triggerHook: 0.6 })
@@ -389,9 +390,9 @@ function initPlayers(num) {
 
     var accordiantween = new TimelineMax()
     .fromTo('.accordian1', .2, {left:0}, {left:0, opacity:1},0)
-    .fromTo('.accordian2', .2, {left:0}, {left:'25%', opacity:1},.2)
-    .fromTo('.accordian3', .2, {left:0}, {left:'50%', opacity:1},.4)
-    .fromTo('.accordian4', .2, {left:0}, {left:'75%', opacity:1},.6);
+    .fromTo('.accordian2', .2, {left:0}, {left:'50%', opacity:1},.2)
+    .fromTo('.accordian3', .2, {left:0}, {left:'0%', opacity:1},.4)
+    .fromTo('.accordian4', .2, {left:0}, {left:'50%', opacity:1},.6);
         var accordianScene = new ScrollMagic.Scene({
             triggerElement: '.slideAccordian',
             triggerHook: 0.6 })
@@ -442,11 +443,14 @@ function initPlayers(num) {
     TweenMax.set('#beeIcon', {opacity:0,visibility:'hidden'});
     TweenMax.set('#iconFruit', {opacity:0,visibility:'hidden'});
     TweenMax.set('.endangeredSpecies q', {opacity:0,visibility:'hidden'});
-    var iconDrawer = new TimelineMax()
-    .staggerFrom('#hive path', 2, {drawSVG:0}, .1)
-    .to('#beeIcon',0.5, {opacity:1,visibility:'visible'},1.5)
-    .to('#iconFruit', 1, {opacity:1,visibility:'visible'},1.8)
-    .to('.endangeredSpecies q', 1, {opacity:1,visibility:'visible'},4);
+    var iconDrawer = new TimelineMax(/*{onStart:function(){
+        var $svgW = $(window).width(), $svgH = $(window).height();
+        $('#hive').css({'width':$svgW,'height':$svgH});
+    }}*/)
+   .staggerFrom('#hive', 1, {drawSVG:0}, .1)
+   .to('#beeIcon',0.5, {opacity:1,visibility:'visible'},1.5)
+   .to('#iconFruit', 1, {opacity:1,visibility:'visible'},1.8)
+   .to('.endangeredSpecies q', 1, {opacity:1,visibility:'visible'},2);
     
     var iconDrawerTween = new ScrollMagic.Scene({
             triggerElement: "#hive",
@@ -485,7 +489,9 @@ function initPlayers(num) {
 //     });
 // }
 // scrollmagic('#section7');
-
+// $(window).load(function(){ // On load
+// $('.swiper-container').css({'height':($(window).height()*1.12)+'px','display':'block'});
+// });
 
 function pinNav(){
     // init ScrollMagic Controller
@@ -493,7 +499,7 @@ var controller = new ScrollMagic.Controller();
 // Scene Handler
 var scene1 = new ScrollMagic.Scene({
   triggerElement: "#nav", // point of execution
-   duration: $('body').height(), // pin element for the window height - 1
+   duration: $('#viewport').height(), // pin element for the window height - 1
   // triggerHook: 0, // don't trigger until #pinned-trigger1 hits the top of the viewport
   reverse: true // allows the effect to trigger when scrolled in the reverse direction
 })
@@ -635,7 +641,6 @@ $(document).on("click", "a[href^=#]", function(e) {
   }
 
 });
-
 
 
 
