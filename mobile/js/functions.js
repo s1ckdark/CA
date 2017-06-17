@@ -163,7 +163,7 @@ grabCursor: true,
 paginationClickable: true
 
 }) }  
-    function sec1_interview_swiper_thumb(){
+
         var interviewTop = new Swiper('.interview-top', {
         nextButton: '.ca-swiper-next',
         prevButton: '.ca-swiper-prev',
@@ -178,7 +178,20 @@ paginationClickable: true
         paginationClickable: true,
      });
 
-}
+        var shpaeSlider = new Swiper('.shape-slider', {
+        nextButton: '.ca-swiper-next',
+        prevButton: '.ca-swiper-prev',
+        spaceBetween: 10,
+        loop:true,
+        autoplay: 3000,
+        grabCursor: true,
+        paginationClickable: true,
+        keyboardControl: true,
+        autoplayDisableOnInteraction:false,
+        speed:1000,
+        paginationClickable: true,
+     });
+
 function sec6_FoodSlider(){
     TweenMax.to('#easy', 1, {backgroundColor:'#a54331',ease:Power3.easeOut});
     var foodSlider = new Swiper('.foodSlider',{
@@ -391,8 +404,8 @@ function initPlayers(num) {
     var accordiantween = new TimelineMax()
     .fromTo('.accordian1', .2, {left:0}, {left:0, opacity:1},0)
     .fromTo('.accordian2', .2, {left:0}, {left:'50%', opacity:1},.2)
-    .fromTo('.accordian3', .2, {left:0}, {left:'0%', opacity:1},.4)
-    .fromTo('.accordian4', .2, {left:0}, {left:'50%', opacity:1},.6);
+    .fromTo('.accordian3', .2, {left:0, top:'-100%'}, {left:'0%', top:0, opacity:1},.4)
+    .fromTo('.accordian4', .2, {left:0, top:'-100%'}, {left:'50%',top:0, opacity:1},.6);
         var accordianScene = new ScrollMagic.Scene({
             triggerElement: '.slideAccordian',
             triggerHook: 0.6 })
