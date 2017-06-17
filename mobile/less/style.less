@@ -447,12 +447,12 @@ nav {
         height:auto;
         position:relative;
         text-align:center;
-        .animeTin {display:block;background-repeat:no-repeat;position:absolute;background-size:contain;width:100vw;height:auto;min-height:150px;max-height:378px;}
-        #animeTin1 {background-image:url('@{img-url}/tin_img_01.png');top:50vh;margin-top:-200px;left:10vw;right:0;bottom:0;}
-        #animeTin2 {background-image:url('@{img-url}/tin_img_02.png');top:50vh;margin-top:-200px;left:10vw;right:0;bottom:0;}
-        #animeTin3 {background-image:url('@{img-url}/tin_img_03.png');top:50vh;margin-top:-200px;left:10vw;right:0;bottom:0;}
-        #animeTin4 {background-image:url('@{img-url}/tin_img_04.png');top:50vh;margin-top:-200px;left:10vw;right:0;bottom:0;}
-        #animeTin5 {background-image:url('@{img-url}/tin_img_05.png');top:50vh;margin-top:-200px;left:10vw;right:0;bottom:0;}
+        .animeTin {display:block;background-repeat:no-repeat;position:absolute;background-size:cover;width:100vw;height:300px;min-height:150px;max-height:378px;padding:20vh 0;}
+        #animeTin1 {background-image:url('@{img-url}/tin_img_01.png');}
+        #animeTin2 {background-image:url('@{img-url}/tin_img_02.png');}
+        #animeTin3 {background-image:url('@{img-url}/tin_img_03.png');}
+        #animeTin4 {background-image:url('@{img-url}/tin_img_04.png');}
+        #animeTin5 {background-image:url('@{img-url}/tin_img_05.png');}
         #animeTin6 {width:100vw;max-height:600px;background-image:url('@{img-url}/tin_img_06.png');top:0;left:0;right:0;bottom:0;display:block;}
         #innerBox {
             .text_box();
@@ -464,15 +464,15 @@ nav {
             .weight {font-weight:400;}
 
         }
-        #section2_bottom_content {margin-left:50%;color:#fff;text-align:center;margin-top:30px;width:50%;height:500px;padding:50px 0;}
-        #almondsdrop {width:500px;height:220px;margin:0 auto;
+        #section2_bottom_content {color:#fff;width:100vw;max-height:500px;height:auto;padding:10vh 0;}
+        #almondsdrop {width:100vw;height:220px;margin:0 auto;
                 .countip {color:@point-color;font-size:16px;};text-transform: uppercase;}
-        .almondsSwing {background-image: url('@{img-url}/almonds23.png');display:block;width:414px;height:160px;margin:0 auto; }
-        i.line {width:414px;;margin:0 auto;height:1px;background:white;display:block;margin:10px auto 20px;}
+        .almondsSwing {background-image: url('@{img-url}/almonds23.png');background-size:contain;background-repeat:no-repeat;display:block;width:80vw;height:auto;min-height:160px;max-height:300px;margin:0 auto; }
+        i.line {width:80vw;;margin:0 auto;height:1px;background:white;display:block;margin:10px auto 20px;}
 
         .icon_section {position:relative;.clearfix();
 
-            &__item {display:block;float:left;background-repeat:no-repeat;}
+            &__item {display:block;float:left;background-repeat:no-repeat;background-size:200px;}
             &__item__icon1 {margin:30px 0 20px;background-image:url('@{img-url}/almonds23_Icecreamscoop.png');width:120px;height:120px;}
             &__item__icon3 {margin:30px 0 20px;background-image:url('@{img-url}/almonds23_tincase.png');width:80px;height:119px;}
             &__item__icon2 {margin:35px 110px 20px;background-image:url('@{img-url}/almonds23_shotglass.png');width:77px;height:122px;}
@@ -612,10 +612,10 @@ nav {
     .foodSlider {overflow:visible;}
     .foodIndicator {width:100%;height:60px;
         .clearfix();
-            div {width:24.67%;height:35px;padding:15px 0 10px;margin-bottom:10px;color:white;text-align:center;float:left;background-color:#782e28;display:inline-block;}
+            div {width:calc('~50% -1px');height:35px;padding:15px 0 10px;margin-bottom:1px;color:white;text-align:center;float:left;background-color:#782e28;display:inline-block;}
             div:hover, div.is-active {background-color:#a54331;}
-            div:nth-child(2) {margin:0 0.44%;}
-            div:last-child {margin-left:0.44%;}
+            div:nth-child(2) {margin:0 1px;}
+
         }
     .swiper-slide 
     {
