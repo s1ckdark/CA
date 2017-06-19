@@ -1,9 +1,7 @@
 /* slider height 80% */
 
 @charset 'UTF-8';
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-@import url('https://cdn.jsdelivr.net/font-nanumlight/1.0/nanumbarungothicweb.css');
 @import url('https://cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css');
 
 @point-color: #f58214;
@@ -11,8 +9,8 @@
 @red-color: #b6202a;
 @orange-color:#dc4600;
 @grey-color: #323232;
-@img-url : '/innovation/almond/img';
-.tb() {background:red;display:block;}
+@img-url : '/project/almond/img';
+
 .clearfix(){
   &:before,
   &:after {
@@ -27,6 +25,14 @@
     background-position:@position;
     background-repeat:no-repeat;
     background-size: 400px;
+    display:block;
+}
+
+.sp-img2(@position) {
+    background-image: url('@{img-url}/sprite2.png');
+    background-position:@position;
+    background-repeat:no-repeat;
+     display:block;
 }
 
 @mobile-small:  ~"only screen and (max-width: 340px)";
@@ -139,8 +145,7 @@ a {
         line-height: 1.2;
         white-space: nowrap;
         font-size: 100px;
-        font-family: 'Playfair Display','Georgia',serif;
-        font-weight: 400;
+         font-weight: 400;
         color: #fff;
         .top { 
             background-image:url('@{img-url}/almond_title.png');
@@ -219,7 +224,7 @@ nav {
         text-align:center;
         color:#fff;
         vertical-align: middle;
-        span {display:inline-block;width:30px;height:22px;position:relative;}
+        span {display:inline-block !important;width:30px;height:22px;position:relative;}
         .nav_left_icon {top:3px;left:-5px;}
             #vitamin {.sp-img(0px -0px);}
     #diet {.sp-img(0px -22px);}
@@ -241,7 +246,7 @@ nav {
     a.readmore {display:inline-block;padding:15px;color:@red-color;border:1px solid @red-color;margin:50px 0;height:20px;line-height:20px;cursor:grab;}
     p {color:@red-color;letter-spacing:-1px;font-size:14px;}
     .copyright {
-        padding: 70px 0;
+        padding: 10px 0;
         background: #fff;
         text-align: center;
         font-size: 14px;
@@ -280,19 +285,18 @@ nav {
     position: relative;
     overflow: hidden;
     .video_section {
-    // position: absolute;
     // top:0;left:0;right:0;bottom:0;
     // width:100%;
-    // height:100%;
-    // padding: 80px 0 180px;
+    // height:600px;
     // background: #333;
     // background-position: 50% 50%;
     // background-repeat: no-repeat;
     // background-size: cover;
    
-   .video_wrap {
+   .bg_video_wrap {
         max-height:600px;
         overflow:hidden;
+        width:100%;
         // margin: 70px auto 0;
         video {
              width: 100%    !important;
@@ -462,13 +466,22 @@ nav {
         margin-left: auto;
         margin-right: auto;
     }
+    #cosmopolitanLogo {.sp-img2(0 -96px);z-index:999;position:absolute;bottom:20px;right:20px;width:145px;height:30px;}
+
     .swiper-slide {
         background-size: cover;
         background-position: center;
     }
+
     .interview-top {
         height: 80%;
         width: 100%;
+        .swiper-slide {width:1100px;height:750px;}
+        .cos1 {background-image:url('@{img-url}/Cosmopolitan_almonds_01.jpg');}
+        .cos2 {background-image:url('@{img-url}/Cosmopolitan_almonds_02.jpg');}
+        .cos3 {background-image:url('@{img-url}/Cosmopolitan_almonds_03.jpg');}
+        .cos4 {background-image:url('@{img-url}/Cosmopolitan_almonds_04.jpg');}
+        .cos5 {background-image:url('@{img-url}/Cosmopolitan_almonds_05.jpg');}
     }
     .ca-swiper-pagination-thumb {
         height: 20%;
@@ -669,23 +682,25 @@ nav {
         align-items: center;
     }
     .swiper-slide-next, .swiper-slide-prev {opacity:0.5}
-    .foodBox {position:absolute;bottom:0px;width:90%;padding:0 5%;background-color:rgba(50,0,0,0.7);}
+    .foodBox {position:absolute;left:0;right:0;bottom:0;width:90%;padding:0 5%;background-color:rgba(50,0,0,0.7);
+        .title {width:25%;}
+        .desc {width:75%;}
+    }
     .food0 {background-image:url('@{img-url}/6_5_food_img_1_0.jpg');}
-    .food1 {background-image:url('@{img-url}/6_5_food_img_1_1.jpg');}
-    .food2 {background-image:url('@{img-url}/6_5_food_img_1_2.jpg');}
-    .food3 {background-image:url('@{img-url}/6_5_food_img_1_3.jpg');}
-    .food4 {background-image:url('@{img-url}/6_5_food_img_2_1.jpg');}
-    .food5 {background-image:url('@{img-url}/6_5_food_img_2_2.jpg');}
-    .food6 {background-image:url('@{img-url}/6_5_food_img_2_3.jpg');}
-    .food7 {background-image:url('@{img-url}/6_5_food_img_3_1.jpg');}
-    .food8 {background-image:url('@{img-url}/6_5_food_img_3_2.jpg');}
-    .food9 {background-image:url('@{img-url}/6_5_food_img_3_3.jpg');}
-    .food10 {background-image:url('@{img-url}/6_5_food_img_4_1.jpg');}
-    .food11 {background-image:url('@{img-url}/6_5_food_img_4_2.jpg');}
-    .food12 {background-image:url('@{img-url}/6_5_food_img_4_3.jpg');}
+    .food1 {background-image:url('@{img-url}/6_5_food_img_1_2.jpg');}
+    .food2 {background-image:url('@{img-url}/6_5_food_img_1_3.jpg');}
+    .food3 {background-image:url('@{img-url}/6_5_food_img_2_1.jpg');}
+    .food4 {background-image:url('@{img-url}/6_5_food_img_2_2.jpg');}
+    .food5 {background-image:url('@{img-url}/6_5_food_img_2_3.jpg');}
+    .food6 {background-image:url('@{img-url}/6_5_food_img_3_1.jpg');}
+    .food7 {background-image:url('@{img-url}/6_5_food_img_3_2.jpg');}
+    .food8 {background-image:url('@{img-url}/6_5_food_img_3_3.jpg');}
+    .food9 {background-image:url('@{img-url}/6_5_food_img_4_1.jpg');}
+    .food10 {background-image:url('@{img-url}/6_5_food_img_4_2.jpg');}
+    .food11 {background-image:url('@{img-url}/6_5_food_img_4_3.jpg');}
     .food-pagination {bottom:-40px;}
-    .foodSlider .swiper-slide .foodBox {visibility: hidden;opacity: 0;}
-    .snsShare {.sp-img(-366px -105px);width:30px;height:30px;display:block;}
+    .foodSlider .swiper-slide .foodBox {visibility: hidden;opacity: 0;letter-spacing:-1px;font-size:1em;}
+    .snsShare {.sp-img(-366px -105px);width:30px;height:30px;display:block;display:none !important}
 
 }
        }  
@@ -777,3 +792,8 @@ nav {
 .video-play-button:active svg {
   transform: rotate(-90deg) scale(.95);
 }
+
+#beeVideo {background-image:url('@{img-url}/beeVideo.jpg');display:block;width:100%;background-position:center;background-size:cover;background-repeat:no-repeat;}
+#leafVideo {background-image:url('@{img-url}/leafVideo.jpg');display:block;width:100%;background-position:center;background-size:cover;background-repeat:no-repeat;}
+#almondVideo {background-image:url('@{img-url}/almondVideo.jpg');display:block;width:100%;background-position:center;background-size:cover;background-repeat:no-repeat;}
+#chefVideo {background-image:url('@{img-url}/chefVideo.jpg');display:block;width:402px;height:402px;background-position:center;background-size:cover;background-repeat:no-repeat;}
