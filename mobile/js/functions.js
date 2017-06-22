@@ -145,13 +145,12 @@ function pause() {
 }
 
 /* slider with Scrollmagic */
-function swSwiper(){
+function swSlider(){
   var swiper = new Swiper('.sw-swiper', {
     preloadImages: false,
     lazyLoading: true,
     pagination: '.sw-pagination',
     loop:true,
-    autoplay:true,
     abCursor: true,
     paginationClickable: true
   });
@@ -163,16 +162,14 @@ function interviewSlider(){
     loop:true,
     grabCursor: true,
     paginationClickable: true,
-    speed:3000,
     paginationClickable: true,
     pagination: '.cos-pagination',
-    autoplay:true,
     abCursor: true
   });
 }
 
 function shapeSlider(){
-  var shpaeSlider = new Swiper('.shape-slider', {
+  var shpaeSlider = new Swiper('.shapeSlider', {
     nextButton: '.shape-next',
     prevButton: '.shape-prev',
     loop:true,
@@ -181,7 +178,6 @@ function shapeSlider(){
     paginationClickable: true,
     keyboardControl: true,
     autoplayDisableOnInteraction:false,
-    speed:1000,
     paginationClickable: true
   });
 }
@@ -309,14 +305,19 @@ function initPlayers(num) {
     // TweenMax.set('#bg_section2', {height:$tinHeight});
     TweenMax.set('.animeTin', {opacity:0, visibility:'hidden'});
     var animeTinTween = new TimelineMax()
-     .fromTo('#animeTin1', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#animeTin2', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#animeTin3', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#animeTin4', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#animeTin5', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#animeTin6', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1})
-     .fromTo('#innerBox', 1, {visibility:'hidden', opacity:0},{visibility:'visible',opacity:1});
-      var tinScene = new ScrollMagic.Scene({
+        .to('#animeTin1', 1, {visibility:'visible',opacity:1}, 1) 
+        .to('#animeTin1', .1, {visibility:'hidden', opacity:0}, 2.5)
+        .to('#animeTin2', 1, {visibility:'visible',opacity:1}, 2) 
+        .to('#animeTin2', .1, {visibility:'hidden', opacity:0}, 3.5)
+        .to('#animeTin3', 1, {visibility:'visible',opacity:1}, 3) 
+        .to('#animeTin3', .1, {visibility:'hidden', opacity:0}, 4.5)
+        .to('#animeTin4', 1, {visibility:'visible',opacity:1}, 4)
+        .to('#animeTin4', .1, {visibility:'hidden', opacity:0}, 5.5)
+        .to('#animeTin5', 1, {visibility:'visible',opacity:1}, 5)
+        .to('#animeTin5', .1, {visibility:'hidden', opacity:0}, 6.5)
+        .to('#animeTin6', 1, {visibility:'visible',opacity:1}, 6)
+        .to('#innerBox', 1, {visibility:'visible',opacity:1}, 7);
+        var tinScene = new ScrollMagic.Scene({
             triggerElement: '.animeTin',
             triggerHook: 0.6 })
         .setTween(animeTinTween)
@@ -383,7 +384,9 @@ function initPlayers(num) {
         .setTween(beedescTween)
         .addTo(controller); 
     
-    TweenMax.set('#beeIcon', {opacity:0,visibility:'hidden'});
+
+    TweenMax.set('.valueOfBee', {opacity:0,visibility:'hidden',y:30});
+    TweenMax.set('#beeIcon', {opacity:0,visibility:'hidden',y:30});
     TweenMax.set('#iconFruit1', {opacity:0,visibility:'hidden'});
     TweenMax.set('#iconFruit2', {opacity:0,visibility:'hidden'});
     TweenMax.set('.endangeredSpecies q', {opacity:0,visibility:'hidden'});
@@ -391,11 +394,13 @@ function initPlayers(num) {
         var $svgW = $(window).width(), $svgH = $(window).height();
         $('#hive').css({'width':$svgW,'height':$svgH});
     }}*/)
-   .staggerFrom('#hive', 1, {drawSVG:0}, .1)
-   .to('#beeIcon',0.5, {opacity:1,visibility:'visible'},1.5)
-   .staggerFromTo('#iconFruit1', 2, {opacity:1,visibility:'visible'}, {opacity:0.2,visibility:'visible'}, 1)
-   .staggerFromTo('#iconFruit2', 2, {opacity:1,visibility:'visible'}, {opacity:0.2,visibility:'visible'}, 1)
-   .to('.endangeredSpecies q', 1, {opacity:1,visibility:'visible'},1);
+   .staggerFrom('#hive', 2, {drawSVG:0}, .1)
+   .to('.valueOfBee',1, {opacity:1,visibility:'visible',y:-10},1.5)
+   .to('#beeIcon',1, {opacity:1,visibility:'visible',y:-10},2)
+   // .fromTo('#iconFruit', 2, {scale:.5,repeat:-1,opacity:.2, visibility:'visible'},{scale:1,repeat:-1,opacity:1, visibility:'visible'}, 2.5)
+   .to('#iconFruit1', 2, {scale:1,opacity:1, visibility:'visible'}, 3.5)
+   .to('#iconFruit2', 2, {scale:1,opacity:1, visibility:'visible'}, 3.5)
+   .to('.endangeredSpecies q', 2, {opacity:1,visibility:'visible'},2);
     
     var iconDrawerTween = new ScrollMagic.Scene({
             triggerElement: "#hive",
@@ -509,7 +514,9 @@ $(document).on("click", "a[href^=#]", function(e) {
 function init(){
     heroResize();
     heroSlideShow(); 
-    initPlayers();
+    shapeSlider();
+    swSlider();
+    interviewSlider();
 }
 init();
 

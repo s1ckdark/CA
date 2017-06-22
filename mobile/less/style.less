@@ -1,7 +1,8 @@
 @charset 'UTF-8';
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 @import url('https://cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css?family=Vidaloka:400');
+
 @point-color: #f58214;
 @yellow-color : #fac846;
 @red-color: #b6202a;
@@ -18,6 +19,7 @@
 @desktop:       ~"only screen and (max-width: 1120px)";
 @desktop-small: ~"only screen and (max-height: 768px)";
 @retina:        ~"only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)" ;
+
 .clearfix(){
   &:before,
   &:after {
@@ -115,7 +117,7 @@ p {
 		line-height: 1.2;
 		white-space: nowrap;
 		font-size: 100px;
-		font-family: 'Playfair Display','Georgia',serif;
+		font-family: 'Vidaloka','Georgia',serif;
 		font-weight: 400;
 		color: #fff;
 		height:136px;
@@ -136,7 +138,7 @@ p {
 	}
 	.scroll_down {
 		position: absolute;
-		bottom: 20vh; left: 0; right: 0;
+		bottom: 100px; left: 0; right: 0;
 		text-align: center;
 		opacity: 1;
 		transition: opacity 0.3s cubic-bezier(0.39, 0, 0.42, 0.88) 0.7s;
@@ -199,7 +201,10 @@ nav {
 		&:nth-child(2n) {margin-left:1px;}
 		span {	display:inline-block !important;width:30px;height:22px;position:relative;}
 		.nav_left_icon {top:3px;left:-5px;}
-		#vitamin {.sp-img(0px -0px);}
+		.active {s
+			an#vitamin {.sp-img(-0px -0px);}
+		}
+		#vitamin {.sp-img(-370px -300px);}
 		#diet {.sp-img(0px -22px);}
 		#food {.sp-img(0px -43px);}
 		#bee {.sp-img(0px -64px);}
@@ -427,7 +432,7 @@ nav {
 			h2 {    line-height: 1.6;font-size: 1.2em;padding: 2vh 0;}}
 		#almondsdrop {width:80vw;height:220px;padding:0 10vw;margin:0 auto;
 				.countip {color:@point-color;font-size:16px;};text-transform: uppercase;}
-		.almondsSwing {background-image: url('@{img-url}/almonds23.png');background-size:80vw;background-repeat:no-repeat;display:block;width:80vw;background-position: 50% 50%;height:auto;min-height:160px;max-height:300px;margin:0 auto; }
+		.almondsSwing {background-image: url('@{img-url}/almonds23.png');background-size:contain;background-repeat:no-repeat;display:block;width:80vw;background-position: 50% 50%;height:auto;min-height:160px;max-height:300px;margin:0 auto; }
 		i.line {width:80vw;;margin:0 auto;height:1px;background:white;display:block;margin:10px auto 20px;}
 		.icon_section {position:relative;.clearfix();
 			&__item {display:block;float:left;width:33.3%;height:33.3vw;}
@@ -478,7 +483,7 @@ nav {
 				i.line {width:80%;;margin:0 auto;height:1px;background:white;display:block;margin:10px auto 20px;}
 				  .accordian1 {background-color:#ebea57;color:#a4a335; z-index:10;
 					.slideAccordian__item__a {  padding: 0 1vw;     
-						i.icon_almonds {display:block;.sp-img(-342px -2px);width:50px;height:65px;margin:80px auto 10px auto;}
+						i.icon_almonds {display:block;.sp-img(-346px -2px);width:48px;height:65px;margin:80px auto 10px auto;}
 						h2 {margin-top:10px;}
 						#corp {font-size:11px;margin-top:80px;height:15px;} 
 						}}
